@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WebRequestSetup: ApiUrls {
+class WebRequestShared: ApiUrls {
     func createUrlRequest(url: String, headers: [String: Any]?, httpMethod: HttpMethod, body: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: url) else {
             return nil

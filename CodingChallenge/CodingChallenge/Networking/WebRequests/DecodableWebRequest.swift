@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DecodableWebRequest: WebRequestSetup {
+class DecodableWebRequest: WebRequestShared {
     
     private var request: URLSessionTask?
     

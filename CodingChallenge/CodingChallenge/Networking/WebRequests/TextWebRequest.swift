@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TextWebRequest: WebRequestSetup {
+class TextWebRequest: WebRequestShared {
     
     var request: URLSessionTask?
     
