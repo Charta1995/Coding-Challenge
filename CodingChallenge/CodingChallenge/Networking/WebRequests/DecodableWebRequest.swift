@@ -16,19 +16,14 @@ class DecodableWebRequest: WebRequestSetup {
         request?.cancel()
     }
     
-    func makeDecodableRequest<T>(decodable: T.Type, url: String, headers: [String: Any]?, body: [String: Any], httpMethod: HttpMethod, finished: @escaping (_ decodable: T?) -> ()) where T: Decodable {
+    func makeDecodableRequest<T>(decodable: T.Type, url: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ decodable: T?) -> ()) where T: Decodable {
         
         if let urlRequest = createUrlRequest(url: url, headers: headers, httpMethod: httpMethod, body: body) {
-            request = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            request = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
                 var decodableObject: T?
                 
                 if error == nil {
-                    guard let data = data, let response = response as? HTTPURLResponse else {
-                        finished(decodableObject)
-                        return
-                    }
-                    
-                    if (response.statusCode != 200) {
+                    guard let data = data else {
                         finished(decodableObject)
                         return
                     }
