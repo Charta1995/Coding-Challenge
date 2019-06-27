@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DecodableWebRequest: ApiUrls {
+class DecodableWebRequest: WebRequestSetup {
     
     private var request: URLSessionTask?
     
@@ -48,42 +48,4 @@ class DecodableWebRequest: ApiUrls {
         }
         
     }
-    
-    private func createUrlRequest(url: String, headers: [String: Any]?, httpMethod: HttpMethod, body: [String: Any]?) -> URLRequest? {
-        guard let url = URL(string: url) else {
-            return nil
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = httpMethod.rawValue
-        if let headers = headers {
-            for dictObj in headers {
-                urlRequest.setValue("\(dictObj.value)", forHTTPHeaderField: "\(dictObj.key)")
-            }
-        }
-        
-        if let body = body, let bodyData = createDataFromDictionary(dict: body) {
-            urlRequest.httpBody = bodyData
-        }
-        
-        return urlRequest
-    }
-    
-    private func createDataFromDictionary(dict: [String: Any]) -> Data? {
-        var jsonData: Data?
-        do {
-            jsonData = try JSONSerialization.data(withJSONObject: dict, options: .sortedKeys)
-        } catch let error {
-            print("Error getting data from dictionary; \(error.localizedDescription)")
-        }
-        return jsonData
-    }
-    
-}
-
-enum HttpMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
 }
