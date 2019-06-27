@@ -17,6 +17,11 @@
 		5B07878D22C53F7800A5E19C /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07878C22C53F7800A5E19C /* Comic.swift */; };
 		5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07878E22C546B300A5E19C /* ApiUrls.swift */; };
 		5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879022C5587900A5E19C /* DecodableWebRequest.swift */; };
+		5B07879422C5618A00A5E19C /* TextWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879322C5618A00A5E19C /* TextWebRequest.swift */; };
+		5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879622C5626300A5E19C /* HttpMethod.swift */; };
+		5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879822C5629A00A5E19C /* WebRequestShared.swift */; };
+		5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879A22C5679C00A5E19C /* ComicSearch.swift */; };
+		5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		5B07878C22C53F7800A5E19C /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		5B07878E22C546B300A5E19C /* ApiUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
 		5B07879022C5587900A5E19C /* DecodableWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableWebRequest.swift; sourceTree = "<group>"; };
+		5B07879322C5618A00A5E19C /* TextWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWebRequest.swift; sourceTree = "<group>"; };
+		5B07879622C5626300A5E19C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		5B07879822C5629A00A5E19C /* WebRequestShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestShared.swift; sourceTree = "<group>"; };
+		5B07879A22C5679C00A5E19C /* ComicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearch.swift; sourceTree = "<group>"; };
+		5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,7 @@
 		5B07876322C537BB00A5E19C /* CodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				5B07879522C5625100A5E19C /* Enums */,
 				5B07878A22C5383E00A5E19C /* Networking */,
 				5B07878922C5382600A5E19C /* Controller */,
 				5B07878822C5382100A5E19C /* View */,
@@ -110,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				5B07878C22C53F7800A5E19C /* Comic.swift */,
+				5B07879A22C5679C00A5E19C /* ComicSearch.swift */,
+				5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,8 +146,9 @@
 		5B07878A22C5383E00A5E19C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5B07879222C5610600A5E19C /* WebRequests */,
 				5B07878E22C546B300A5E19C /* ApiUrls.swift */,
-				5B07879022C5587900A5E19C /* DecodableWebRequest.swift */,
+				5B07879822C5629A00A5E19C /* WebRequestShared.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -146,6 +160,23 @@
 				5B07877022C537BB00A5E19C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5B07879222C5610600A5E19C /* WebRequests */ = {
+			isa = PBXGroup;
+			children = (
+				5B07879022C5587900A5E19C /* DecodableWebRequest.swift */,
+				5B07879322C5618A00A5E19C /* TextWebRequest.swift */,
+			);
+			path = WebRequests;
+			sourceTree = "<group>";
+		};
+		5B07879522C5625100A5E19C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5B07879622C5626300A5E19C /* HttpMethod.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,9 +283,14 @@
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
 				5B07876722C537BB00A5E19C /* ViewController.swift in Sources */,
+				5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */,
 				5B07876522C537BB00A5E19C /* AppDelegate.swift in Sources */,
+				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
+				5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */,
+				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */,
+				5B07879422C5618A00A5E19C /* TextWebRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
