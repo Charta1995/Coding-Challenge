@@ -32,4 +32,9 @@ class TextWebRequest: WebRequestShared {
             request?.resume()
         }
     }
+    
+    private func parseDataString(dataString: String) {
+        let fractions = dataString.split(separator: " ")
+        
+    }
 }
