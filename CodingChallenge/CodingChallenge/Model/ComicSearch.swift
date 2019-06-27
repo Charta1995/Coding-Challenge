@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ComitSearch {
+struct ComicSearch {
     var id: Int?
     var imageUrlEndpoint: String?
     

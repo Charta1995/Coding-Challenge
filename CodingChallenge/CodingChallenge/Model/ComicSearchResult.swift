@@ -10,5 +10,5 @@ import Foundation
 
 struct ComicSearchResult {
     var relevance: Double?
-    var comicSearches: [ComitSearch]?
+    var comicSearches: [ComicSearch]!
 }
