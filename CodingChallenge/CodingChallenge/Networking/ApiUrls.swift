@@ -8,8 +8,10 @@
 
 import Foundation
 
-let current = "http://xkcd.com/info.0.json"
-let spesificComicPartOne = "http://xkcd.com/"
-let spesificComicPathTwo = "/info.0.json"
-let comicSeach = "https://relevantxkcd.appspot.com/process?action=xkcd&query=COMPUTER"
-let comicExplanationUrl = "http://www.explainxkcd.com/2168"
+class ApiUrls {
+    let current = "http://xkcd.com/info.0.json"
+    let spesificComicPartOne = "http://xkcd.com/"
+    let spesificComicPathTwo = "/info.0.json"
+    let comicSeach = "https://relevantxkcd.appspot.com/process?action=xkcd&query=COMPUTER"
+    let comicExplanationUrl = "http://www.explainxkcd.com/2168"
+}
