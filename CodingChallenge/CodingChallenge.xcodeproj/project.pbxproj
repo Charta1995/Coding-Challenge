@@ -20,6 +20,8 @@
 		5B07879422C5618A00A5E19C /* TextWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879322C5618A00A5E19C /* TextWebRequest.swift */; };
 		5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879622C5626300A5E19C /* HttpMethod.swift */; };
 		5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879822C5629A00A5E19C /* WebRequestShared.swift */; };
+		5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879A22C5679C00A5E19C /* ComicSearch.swift */; };
+		5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		5B07879322C5618A00A5E19C /* TextWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWebRequest.swift; sourceTree = "<group>"; };
 		5B07879622C5626300A5E19C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		5B07879822C5629A00A5E19C /* WebRequestShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestShared.swift; sourceTree = "<group>"; };
+		5B07879A22C5679C00A5E19C /* ComicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearch.swift; sourceTree = "<group>"; };
+		5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				5B07878C22C53F7800A5E19C /* Comic.swift */,
+				5B07879A22C5679C00A5E19C /* ComicSearch.swift */,
+				5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
 				5B07876722C537BB00A5E19C /* ViewController.swift in Sources */,
+				5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */,
 				5B07876522C537BB00A5E19C /* AppDelegate.swift in Sources */,
 				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
+				5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */,
 				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */,
