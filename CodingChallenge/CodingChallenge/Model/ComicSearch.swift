@@ -12,7 +12,7 @@ struct ComicSearch {
     var id: Int?
     var imageUrlEndpoint: String?
     
-    init?(id: Int?, imageUrlEndpoint: String?) {
+    init?(id: Int?, imageUrlEndpoint: String?, imageUrlStart: String) {
         self.id = id
         self.imageUrlEndpoint = imageUrlEndpoint
     }

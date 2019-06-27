@@ -46,7 +46,7 @@ class TextWebRequest: WebRequestShared {
             let comicId = Int(comicIdString)
             let imageUrlEndpoint = String(fractions[index])
             
-            if let comicSearch = ComicSearch(id: comicId, imageUrlEndpoint: imageUrlEndpoint) {
+            if let comicSearch = ComicSearch(id: comicId, imageUrlEndpoint: imageUrlEndpoint, imageUrlStart: comicImageUrlStart) {
                 comicSearchArray.append(comicSearch)
             }
             
