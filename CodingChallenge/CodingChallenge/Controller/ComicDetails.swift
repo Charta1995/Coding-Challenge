@@ -10,6 +10,6 @@ import UIKit
 
 class ComicDetails: UIViewController {
     
-    
+    var selectedComic: Comic?
     
 }
