@@ -12,20 +12,19 @@ class ComicController: UIViewController {
     
     @IBOutlet weak var comicCollectionView: UICollectionView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.showsVerticalScrollIndicator = false
+        self.title = "Comics"
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "" {
             if let theComic = sender as? Comic {
-                if let theDestination = segue.destination as? UIViewController {
+                if let theDestination = segue.destination as? ComicDetails {
                     
                 }
             }
@@ -43,7 +42,12 @@ extension ComicController: UICollectionViewDataSource {
         //The API doesn't have anything on position 0, therefore i have to use indexPath.row + 1 in the cell
         //Which explains why the number below is one number less.
         let maximumNumberOfComics = 2167
-        return maximumNumberOfComics
+        let comicForTheDay = 1
+        return section == 0 ? comicForTheDay : maximumNumberOfComics
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,10 +58,14 @@ extension ComicController: UICollectionViewDataSource {
         cell.decodableWebRequest.cancelRequest()
         cell.imageLoader.cancelRequest()
         
-        cell.configureCell(row: indexPath.row)
+        if indexPath.section == 0 {
+            cell.configureCell(row: nil)
+        } else {
+            cell.configureCell(row: indexPath.row)
+        }
+        
         return cell
     }
-    
     
 }
 

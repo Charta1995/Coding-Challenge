@@ -20,14 +20,22 @@ class ComicCell: UICollectionViewCell {
     
     private var comic: Comic!
     
-    func configureCell(row: Int) {
+    func configureCell(row: Int?) {
         setupLoader()
         loadComic(row: row)
     }
     
-    private func loadComic(row: Int) {
-        let comicNumber = row + 1
-        let comicCompleteUrl = "\(decodableWebRequest.spesificComicPartOne)\(comicNumber)\(decodableWebRequest.spesificComicPathTwo)"
+    private func loadComic(row: Int?) {
+        var comicCompleteUrl: String!
+        if let theRow = row {
+            let comicNumber = theRow + 1
+            comicCompleteUrl = "\(decodableWebRequest.spesificComicPartOne)\(comicNumber)\(decodableWebRequest.spesificComicPathTwo)"
+            comicImage.contentMode = .scaleAspectFit
+        } else {
+            comicCompleteUrl = decodableWebRequest.current
+            comicImage.contentMode = .scaleToFill
+        }
+        
         
         if let theSavedComic = DataService.instance.getComic(url: comicCompleteUrl) {
             updateComicAndCell(comic: theSavedComic)
