@@ -18,11 +18,15 @@ class ComicCell: UICollectionViewCell {
     let decodableWebRequest = DecodableWebRequest()
     let imageLoader = ImageLoader()
     
-    private var comic: Comic!
+    private var comic: Comic?
     
     func configureCell(row: Int?) {
         setupLoader()
         loadComic(row: row)
+    }
+    
+    func getCurrentComic() -> Comic? {
+        return comic
     }
     
     private func loadComic(row: Int?) {
@@ -57,6 +61,7 @@ class ComicCell: UICollectionViewCell {
     }
     
     private func loadComicImage() {
+        guard let comic = comic else { return }
         imageLoader.loadImage(url: comic.img) { (loadedComicImage) in
             if let theLoadedComicImage = loadedComicImage {
                 self.toggleLoading(shouldStart: false)
@@ -71,6 +76,7 @@ class ComicCell: UICollectionViewCell {
     }
     
     private func updateTitle() {
+        guard let comic = comic else { return }
         if comic.title != "" {
             comicTitle.text = comic.title
         } else {
@@ -79,6 +85,7 @@ class ComicCell: UICollectionViewCell {
     }
     
     private func updateCommicComment() {
+        guard let comic = comic else { return }
         if comic.alt == "" {
             self.comicComment.isHidden = true
         } else {

@@ -69,6 +69,16 @@ extension ComicController: UICollectionViewDataSource {
     
 }
 
+extension ComicController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? ComicCell {
+            let selectedComic = cell.getCurrentComic()
+            guard let comic = selectedComic else { return }
+            performSegue(withIdentifier: "toComicDesc", sender: comic)
+        }
+    }
+}
+
 extension ComicController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
@@ -80,8 +90,3 @@ extension ComicController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension ComicController: DidTapComicCell {
-    func cellTapped(comic: Comic) {
-        performSegue(withIdentifier: "", sender: nil)
-    }
-}

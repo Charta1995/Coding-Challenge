@@ -110,6 +110,7 @@
                     <navigationItem key="navigationItem" id="FnH-Sn-dfb"/>
                     <connections>
                         <outlet property="comicCollectionView" destination="eGV-mO-N6Y" id="UUT-Hz-mYt"/>
+                        <segue destination="snI-Y5-2nr" kind="show" identifier="toComicDesc" id="asg-FW-IrP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -25,7 +25,6 @@
 		5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */; };
 		5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C622C6605400C20E1E /* DataService.swift */; };
 		5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */; };
-		5B0FA7D222C6AA5400C20E1E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7D122C6AA5400C20E1E /* Protocols.swift */; };
 		5B0FA7D422C6C28A00C20E1E /* ComicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +61,6 @@
 		5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		5B0FA7C622C6605400C20E1E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		5B0FA7D122C6AA5400C20E1E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +113,6 @@
 				5B07877322C537BB00A5E19C /* Info.plist */,
 				5B07876B22C537BB00A5E19C /* CodingChallenge.xcdatamodeld */,
 				5B0FA7C622C6605400C20E1E /* DataService.swift */,
-				5B0FA7D122C6AA5400C20E1E /* Protocols.swift */,
 			);
 			path = CodingChallenge;
 			sourceTree = "<group>";
@@ -314,7 +311,6 @@
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */,
 				5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */,
-				5B0FA7D222C6AA5400C20E1E /* Protocols.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
 				5B07876722C537BB00A5E19C /* ComicController.swift in Sources */,
 				5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */,
