@@ -9,7 +9,7 @@
 import UIKit
 
 class ComicController: UIViewController {
-
+    
     @IBOutlet weak var comicCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -17,6 +17,17 @@ class ComicController: UIViewController {
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.showsVerticalScrollIndicator = false
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "" {
+            if let theComic = sender as? Comic {
+                if let theDestination = segue.destination as? UIViewController {
+                    
+                }
+            }
+        }
     }
 }
 
@@ -48,12 +59,6 @@ extension ComicController: UICollectionViewDataSource {
     
 }
 
-extension ComicController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-}
-
 extension ComicController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
@@ -65,4 +70,10 @@ extension ComicController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+}
+
+extension ComicController: DidTapComicCell {
+    func cellTapped(comic: Comic) {
+        performSegue(withIdentifier: "", sender: nil)
+    }
 }
