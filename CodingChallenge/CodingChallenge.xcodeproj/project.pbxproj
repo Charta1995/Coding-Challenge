@@ -26,6 +26,8 @@
 		5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C622C6605400C20E1E /* DataService.swift */; };
 		5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */; };
 		5B0FA7D422C6C28A00C20E1E /* ComicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */; };
+		5B0FA7DE22C6D8EF00C20E1E /* OptionsButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7DD22C6D8EF00C20E1E /* OptionsButtonCell.swift */; };
+		5B0FA7E022C6D9E300C20E1E /* RealeaseDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7DF22C6D9E300C20E1E /* RealeaseDateCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		5B0FA7C622C6605400C20E1E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetails.swift; sourceTree = "<group>"; };
+		5B0FA7DD22C6D8EF00C20E1E /* OptionsButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButtonCell.swift; sourceTree = "<group>"; };
+		5B0FA7DF22C6D9E300C20E1E /* RealeaseDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealeaseDateCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		5B0FA7C222C65DF300C20E1E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5B0FA7DC22C6D86300C20E1E /* TableViewCells */,
 				5B0FA7C322C65DFA00C20E1E /* CollectionViewCells */,
 			);
 			path = Cells;
@@ -205,6 +210,15 @@
 				5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		5B0FA7DC22C6D86300C20E1E /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5B0FA7DD22C6D8EF00C20E1E /* OptionsButtonCell.swift */,
+				5B0FA7DF22C6D9E300C20E1E /* RealeaseDateCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,10 +332,12 @@
 				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
 				5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */,
 				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
+				5B0FA7DE22C6D8EF00C20E1E /* OptionsButtonCell.swift in Sources */,
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */,
 				5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */,
 				5B0FA7D422C6C28A00C20E1E /* ComicDetails.swift in Sources */,
+				5B0FA7E022C6D9E300C20E1E /* RealeaseDateCell.swift in Sources */,
 				5B07879422C5618A00A5E19C /* TextWebRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
