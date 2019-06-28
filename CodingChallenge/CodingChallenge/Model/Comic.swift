@@ -14,7 +14,7 @@ struct Comic: Decodable {
     var link: String
     var year: String
     var news: String
-    var save_title: String
+    var safe_title: String
     var transcript: String
     var alt: String
     var img: String

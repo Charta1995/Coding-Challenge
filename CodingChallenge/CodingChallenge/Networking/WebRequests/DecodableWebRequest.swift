@@ -30,9 +30,11 @@ class DecodableWebRequest: WebRequestShared {
                     
                     do {
                         decodableObject = try JSONDecoder().decode(decodable, from: data)
-                        finished(decodableObject)
+                        DispatchQueue.main.async {
+                            finished(decodableObject)
+                        }
                     } catch let error {
-                        print("Error parsing data to decodable object: \(error.localizedDescription)")
+                        print("Error parsing data to decodable object: \(error)")
                         finished(decodableObject)
                     }
                 } else {
