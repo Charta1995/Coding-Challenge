@@ -17,8 +17,8 @@ class DataService {
      */
     
     fileprivate let imageCache: NSCache<NSString, UIImage> = NSCache()
-    fileprivate let comicCache: NSCache<NSString, ComicContainer> = NSCache()
-    fileprivate let comicSearchResultCache: NSCache<NSString, ComicSearchResultContainer> = NSCache()
+    fileprivate var comicCache = [String: Comic]() // NSCache<NSString, ComicContainer> = NSCache()
+    fileprivate var comicSearchResultCache = [String: ComicSearchResult]() //NSCache<NSString, ComicSearchResultContainer> = NSCache()
     
     /*
         Temporarely save an image.
@@ -42,14 +42,14 @@ class DataService {
         I'm using a struct for the comic because struct is faster than classes and i'm using the new json fetching with the protocol, Decodable.
      */
     func setComic(url: String, comic: Comic) {
-        comicCache.setObject(ComicContainer(comic: comic), forKey: url as NSString)
+        comicCache[url] = comic //.setObject(ComicContainer(comic: comic), forKey: url as NSString)
     }
     
     /*
         Get a comic which is temporarely saved
     */
     func getComic(url: String) -> Comic? {
-        return comicCache.object(forKey: url as NSString)?.comic
+        return comicCache[url] //.object(forKey: url as NSString)?.comic
     }
     
     /*
@@ -57,14 +57,14 @@ class DataService {
      */
     
     func setComicSearchResult(url: String, comicSearchResult: ComicSearchResult) {
-        comicSearchResultCache.setObject(ComicSearchResultContainer(comicSearchResult: comicSearchResult), forKey: url as NSString)
+        comicSearchResultCache[url] = comicSearchResult // .setObject(ComicSearchResultContainer(comicSearchResult: comicSearchResult), forKey: url as NSString)
     }
     
     /*
         Get a temporarely saved comic search result.
      */
     func getComicSearchResult(url: String) -> ComicSearchResult? {
-        return comicSearchResultCache.object(forKey: url as NSString)?.comicSearchResult
+        return comicSearchResultCache[url] // .object(forKey: url as NSString)?.comicSearchResult
     }
     
 }
