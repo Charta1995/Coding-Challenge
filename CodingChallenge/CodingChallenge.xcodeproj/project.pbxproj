@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B07876522C537BB00A5E19C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07876422C537BB00A5E19C /* AppDelegate.swift */; };
-		5B07876722C537BB00A5E19C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07876622C537BB00A5E19C /* ViewController.swift */; };
+		5B07876722C537BB00A5E19C /* ComicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07876622C537BB00A5E19C /* ComicController.swift */; };
 		5B07876A22C537BB00A5E19C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B07876822C537BB00A5E19C /* Main.storyboard */; };
 		5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B07876B22C537BB00A5E19C /* CodingChallenge.xcdatamodeld */; };
 		5B07876F22C537BB00A5E19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B07876E22C537BB00A5E19C /* Assets.xcassets */; };
@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		5B07876122C537BB00A5E19C /* CodingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B07876422C537BB00A5E19C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B07876622C537BB00A5E19C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B07876622C537BB00A5E19C /* ComicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicController.swift; sourceTree = "<group>"; };
 		5B07876922C537BB00A5E19C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B07876C22C537BB00A5E19C /* CodingChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CodingChallenge.xcdatamodel; sourceTree = "<group>"; };
 		5B07876E22C537BB00A5E19C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		5B07878922C5382600A5E19C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5B07876622C537BB00A5E19C /* ViewController.swift */,
+				5B07876622C537BB00A5E19C /* ComicController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
-				5B07876722C537BB00A5E19C /* ViewController.swift in Sources */,
+				5B07876722C537BB00A5E19C /* ComicController.swift in Sources */,
 				5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */,
 				5B07876522C537BB00A5E19C /* AppDelegate.swift in Sources */,
 				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
