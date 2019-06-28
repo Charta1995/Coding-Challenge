@@ -24,9 +24,7 @@
 		5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */; };
 		5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */; };
 		5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C622C6605400C20E1E /* DataService.swift */; };
-		5B0FA7C922C6611E00C20E1E /* ComicContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C822C6611E00C20E1E /* ComicContainer.swift */; };
 		5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */; };
-		5B0FA7CD22C66C6000C20E1E /* ComicSearchResultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7CC22C66C6000C20E1E /* ComicSearchResultContainer.swift */; };
 		5B0FA7D222C6AA5400C20E1E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7D122C6AA5400C20E1E /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +60,7 @@
 		5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearchResult.swift; sourceTree = "<group>"; };
 		5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		5B0FA7C622C6605400C20E1E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		5B0FA7C822C6611E00C20E1E /* ComicContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicContainer.swift; sourceTree = "<group>"; };
 		5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		5B0FA7CC22C66C6000C20E1E /* ComicSearchResultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearchResultContainer.swift; sourceTree = "<group>"; };
 		5B0FA7D122C6AA5400C20E1E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +133,6 @@
 				5B07878C22C53F7800A5E19C /* Comic.swift */,
 				5B07879A22C5679C00A5E19C /* ComicSearch.swift */,
 				5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */,
-				5B0FA7C822C6611E00C20E1E /* ComicContainer.swift */,
-				5B0FA7CC22C66C6000C20E1E /* ComicSearchResultContainer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,8 +321,6 @@
 				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */,
-				5B0FA7CD22C66C6000C20E1E /* ComicSearchResultContainer.swift in Sources */,
-				5B0FA7C922C6611E00C20E1E /* ComicContainer.swift in Sources */,
 				5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */,
 				5B07879422C5618A00A5E19C /* TextWebRequest.swift in Sources */,
 			);
