@@ -34,7 +34,7 @@ class DecodableWebRequest: WebRequestShared {
                             finished(decodableObject)
                         }
                     } catch let error {
-                        print("Error parsing data to decodable object: \(error.localizedDescription)")
+                        print("Error parsing data to decodable object: \(error)")
                         finished(decodableObject)
                     }
                 } else {
