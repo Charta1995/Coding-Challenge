@@ -12,6 +12,8 @@ class ComicController: UIViewController {
     
     @IBOutlet weak var comicCollectionView: UICollectionView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         comicCollectionView.delegate = self
@@ -64,10 +66,8 @@ extension ComicController: UICollectionViewDelegateFlowLayout {
         return 8
     }
     
-    private func setupFlowLayout() {
-        if let flowLayout = comicCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 375)
     }
     
 }
