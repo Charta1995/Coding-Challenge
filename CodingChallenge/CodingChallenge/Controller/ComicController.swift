@@ -16,8 +16,8 @@ class ComicController: UIViewController {
         super.viewDidLoad()
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
+        comicCollectionView.showsVerticalScrollIndicator = false
     }
-
 }
 
 /*
@@ -34,7 +34,7 @@ extension ComicController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath) as! ComicCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCellId", for: indexPath) as! ComicCell
         /*
             If user scroll past the cell when the cell has not finished loaded yet, the loadings will be canceled.
          */
@@ -55,7 +55,14 @@ extension ComicController: UICollectionViewDelegate {
 }
 
 extension ComicController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
+    
+    private func setupFlowLayout() {
+        if let flowLayout = comicCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
+        }
+    }
+    
 }
