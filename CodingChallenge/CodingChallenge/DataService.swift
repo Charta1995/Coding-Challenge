@@ -10,7 +10,7 @@ import UIKit
 
 class DataService {
     
-    let instance = DataService()
+    static let instance = DataService()
     
     /*
         I'm using chaches for saving what has been loaded, to then reuse it later.
@@ -18,6 +18,7 @@ class DataService {
     
     fileprivate let imageCache: NSCache<NSString, UIImage> = NSCache()
     fileprivate let comicCache: NSCache<NSString, ComicContainer> = NSCache()
+    fileprivate let comicSearchResultCache: NSCache<NSString, ComicSearchResultContainer> = NSCache()
     
     /*
         Temporarely save an image.
@@ -49,6 +50,21 @@ class DataService {
     */
     func getComic(url: String) -> Comic? {
         return comicCache.object(forKey: url as NSString)?.comic
+    }
+    
+    /*
+        Temporarely save a comic search result.
+     */
+    
+    func setComicSearchResult(url: String, comicSearchResult: ComicSearchResult) {
+        comicSearchResultCache.setObject(ComicSearchResultContainer(comicSearchResult: comicSearchResult), forKey: url as NSString)
+    }
+    
+    /*
+        Get a temporarely saved comic search result.
+     */
+    func getComicSearchResult(url: String) -> ComicSearchResult? {
+        return comicSearchResultCache.object(forKey: url as NSString)?.comicSearchResult
     }
     
 }
