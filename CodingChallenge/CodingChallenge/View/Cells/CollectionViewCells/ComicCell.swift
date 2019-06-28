@@ -20,21 +20,6 @@ class ComicCell: UICollectionViewCell {
     
     private var comic: Comic!
     
-    /*
-        Making the cell fit the height of the content
-     */
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-       
-        setNeedsLayout()
-        layoutIfNeeded()
-        
-        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-        var frame = layoutAttributes.frame
-        frame.size.height = ceil(size.height)
-        layoutAttributes.frame = frame
-        return layoutAttributes
-    }
-    
     func configureCell(row: Int) {
         setupLoader()
         loadComic(row: row)
@@ -45,7 +30,6 @@ class ComicCell: UICollectionViewCell {
         let comicCompleteUrl = "\(decodableWebRequest.spesificComicPartOne)\(comicNumber)\(decodableWebRequest.spesificComicPathTwo)"
         
         if let theSavedComic = DataService.instance.getComic(url: comicCompleteUrl) {
-            loadComicImage()
             updateComicAndCell(comic: theSavedComic)
         } else {
             toggleLoading(shouldStart: true)
