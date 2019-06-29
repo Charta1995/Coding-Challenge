@@ -37,7 +37,6 @@ class ComicCell: UICollectionViewCell {
             comicImage.contentMode = .scaleAspectFit
         } else {
             comicCompleteUrl = decodableWebRequest.current
-            comicImage.contentMode = .scaleToFill
         }
         
         

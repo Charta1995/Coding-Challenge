@@ -20,4 +20,23 @@ struct Comic: Decodable {
     var img: String
     var title: String
     var day: String
+    
+    
+    func getContentToShare(image: UIImage?, comicOnWeb: String, comicExplantaion: String) -> [Any] {
+        var contentToShare = [Any]()
+        contentToShare.append(image as Any)
+      
+        if alt != "" {
+            contentToShare.append("\(alt)\n\n")
+        }
+        
+        if transcript != "" {
+            contentToShare.append("Transcript: \(transcript)\n\n")
+        }
+        
+        contentToShare.append("Visit webpage: \(comicOnWeb)\n\n")
+        contentToShare.append("Visit explanation: \(comicExplantaion)")
+        
+        return contentToShare
+    }
 }

@@ -18,7 +18,9 @@ class ImageLoader: WebRequestShared {
     
     func loadImage(url: String, finishedLoadedImage: @escaping (_ loadedImage: UIImage?) -> ()) {
         if let savedImage = DataService.instance.getAnImage(url: url) {
-            finishedLoadedImage(savedImage)
+            DispatchQueue.main.async {
+                finishedLoadedImage(savedImage)
+            }
         } else {
             guard let urlRequest = createUrlRequest(url: url, headers: nil, httpMethod: .get, body: nil) else {
                 finishedLoadedImage(nil)
