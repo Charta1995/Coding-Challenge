@@ -65,7 +65,7 @@ class ComicDetails: UIViewController {
         }
         
         if selectedComic.transcript != "" {
-            cellContent.append(ComicDetailsSection(contentDescription: "Transcript", content: [selectedComic.alt]))
+            cellContent.append(ComicDetailsSection(contentDescription: "Transcript", content: [selectedComic.transcript]))
         }
         cellContent.append(ComicDetailsSection(contentDescription: "", content: ["Visit website"], isRedirectable: true))
         cellContent.append(ComicDetailsSection(contentDescription: "", content: ["Visit explanation"], isRedirectable: true))
@@ -96,7 +96,7 @@ extension ComicDetails: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "anyTextID") as! AnyTextCell
-            cell.configureCell(text: cellContent[indexPath.section - 1].content[0], isTranscript: cellContent[indexPath.section - 1].contentDescription == "Transcript", isRedirectable: cellContent[indexPath.section - 1].isRedirectable)
+            cell.configureCell(text: cellContent[indexPath.section - 1].content[0], isRedirectable: cellContent[indexPath.section - 1].isRedirectable)
             return cell
         }
     }
