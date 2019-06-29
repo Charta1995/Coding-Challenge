@@ -14,7 +14,7 @@ class OptionsButtonCell: UITableViewCell {
     @IBOutlet weak var shareBtn: UIButton!
     
     func configureCell() {
-        self.selectionStyle = .none
+        selectionStyle = .none
         configureAddToFavoritesBtn()
         confogireShareButton()
     }
