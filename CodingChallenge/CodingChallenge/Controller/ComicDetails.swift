@@ -23,11 +23,16 @@ class ComicDetails: UIViewController {
     var selectedComic: Comic!
     var cellContent = [ComicDetailsSection]()
     private let imageLoader = ImageLoader()
+    private var completeUrlForSpesificComic: String!
+    private var completeUrlForExplanation: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = selectedComic.title == selectedComic.safe_title ? selectedComic.title : selectedComic.safe_title
         detailInfoTable.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
+        
+        completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)/)"
+        completeUrlForExplanation = "\(imageLoader.comicExplanationUrl)\(selectedComic.num)"
         
         createCellContent()
         setupTableView()
@@ -146,11 +151,10 @@ extension ComicDetails: UITableViewDelegate {
             let cellText = cellContent[indexPath.section - 1].content[indexPath.row]
             switch cellText {
             case "Visit website":
-                performSegue(withIdentifier: "goToWebController", sender: imageLoader.current)
+                performSegue(withIdentifier: "goToWebController", sender: completeUrlForSpesificComic)
                 break
             case "Visit explanation":
-                let completeUrlForSpesicicComic = "\(imageLoader.spesificComicPartOne)\(selectedComic.num)\(imageLoader.spesificComicPathTwo)"
-                performSegue(withIdentifier: "goToWebController", sender: completeUrlForSpesicicComic)
+                performSegue(withIdentifier: "goToWebController", sender: completeUrlForExplanation)
                 break
             default: break}
         }
@@ -169,6 +173,8 @@ extension ComicDetails: OptionsButtonWasTapped {
     }
     
     func shareTapped() {
-        print("Share")
+        let shareActivity = UIActivityViewController(activityItems: selectedComic.getContentToShare(image: comicImage.image, comicOnWeb: completeUrlForSpesificComic, comicExplantaion: completeUrlForExplanation), applicationActivities: nil)
+        shareActivity.popoverPresentationController?.sourceView = view
+        present(shareActivity, animated: true, completion: nil)
     }
 }
