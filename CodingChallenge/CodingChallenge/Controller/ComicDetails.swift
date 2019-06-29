@@ -33,7 +33,7 @@ class ComicDetails: UIViewController {
         title = selectedComic.title == selectedComic.safe_title ? selectedComic.title : selectedComic.safe_title
         detailInfoTable.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
         
-        completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)/)"
+        completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)"
         completeUrlForExplanation = "\(imageLoader.comicExplanationUrl)\(selectedComic.num)"
         
         checkIfFavorite()
