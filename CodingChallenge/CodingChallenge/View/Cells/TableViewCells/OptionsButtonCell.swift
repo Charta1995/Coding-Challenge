@@ -13,7 +13,10 @@ class OptionsButtonCell: UITableViewCell {
     @IBOutlet weak var addToFavoritesBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     
-    func configureCell() {
+    private var optionButtonWasTappedDelegate: OptionsButtonWasTapped?
+    
+    func configureCell(comicDetails: ComicDetails) {
+        optionButtonWasTappedDelegate = comicDetails
         selectionStyle = .none
         configureAddToFavoritesBtn()
         confogireShareButton()
@@ -28,11 +31,11 @@ class OptionsButtonCell: UITableViewCell {
     }
     
     @IBAction func addToFavorites(_ sender: UIButton!) {
-        
+        optionButtonWasTappedDelegate?.addToFavoriteTapped()
     }
     
     @IBAction func share(_ sender: UIButton!) {
-        
+        optionButtonWasTappedDelegate?.shareTapped()
     }
     
 }
