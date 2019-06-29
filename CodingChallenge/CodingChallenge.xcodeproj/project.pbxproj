@@ -39,6 +39,8 @@
 		5B39F5FA22C7AF23003997BF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5F922C7AF23003997BF /* CoreDataManager.swift */; };
 		5B39F5FC22C7B985003997BF /* ImageCompressQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5FB22C7B985003997BF /* ImageCompressQuality.swift */; };
 		5B39F5FE22C7ECDA003997BF /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5FD22C7ECDA003997BF /* Alerts.swift */; };
+		5B39F60022C7F2B5003997BF /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */; };
+		5B39F60222C7FA4A003997BF /* ComicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F60122C7FA4A003997BF /* ComicCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		5B39F5F922C7AF23003997BF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5B39F5FB22C7B985003997BF /* ImageCompressQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressQuality.swift; sourceTree = "<group>"; };
 		5B39F5FD22C7ECDA003997BF /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		5B39F60122C7FA4A003997BF /* ComicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,7 @@
 				5B07876622C537BB00A5E19C /* ComicController.swift */,
 				5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */,
 				5B39F5F022C79E12003997BF /* WebViewController.swift */,
+				5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				5B0FA7E622C6E75A00C20E1E /* AnyTextCellNib.xib */,
 				5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */,
 				5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */,
+				5B39F60122C7FA4A003997BF /* ComicCell.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				5B39F5EF22C78E96003997BF /* ComicDetailHeaderFooterView.xib in Resources */,
 				5B0FA7E722C6E75A00C20E1E /* AnyTextCellNib.xib in Resources */,
 				5B0FA7E922C6E77000C20E1E /* OptionsButtonCellNib.xib in Resources */,
+				5B39F60222C7FA4A003997BF /* ComicCell.xib in Resources */,
 				5B07876F22C537BB00A5E19C /* Assets.xcassets in Resources */,
 				5B07876A22C537BB00A5E19C /* Main.storyboard in Resources */,
 			);
@@ -413,6 +420,7 @@
 				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
 				5B39F5FA22C7AF23003997BF /* CoreDataManager.swift in Sources */,
 				5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */,
+				5B39F60022C7F2B5003997BF /* FavoriteViewController.swift in Sources */,
 				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
 				5B0FA7E222C6E2A500C20E1E /* ComicDetailsSection.swift in Sources */,
 				5B0FA7DE22C6D8EF00C20E1E /* OptionsButtonCell.swift in Sources */,
@@ -587,6 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JDRWP478MY;
 				INFOPLIST_FILE = CodingChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,6 +614,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JDRWP478MY;
 				INFOPLIST_FILE = CodingChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

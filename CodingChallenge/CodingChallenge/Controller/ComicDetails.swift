@@ -28,12 +28,12 @@ class ComicDetails: UIViewController {
     private var completeUrlForSpesificComic: String!
     private var completeUrlForExplanation: String!
     private var isFavorite: Bool!
+    private var shouldCheckForUpdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = selectedComic.title == selectedComic.safe_title ? selectedComic.title : selectedComic.safe_title
         detailInfoTable.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
-        
         completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)"
         completeUrlForExplanation = "\(imageLoader.comicExplanationUrl)\(selectedComic.num)"
         
@@ -42,6 +42,41 @@ class ComicDetails: UIViewController {
         setupTableView()
         setUpScrollView()
         getComicImage()
+        startListeningForFavoriteChange()
+    }
+    
+    deinit {
+        stopListeningForFavoriteChange()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldCheckForUpdate {
+            justToggleAndReload()
+            shouldCheckForUpdate = false
+        }
+    }
+ 
+    private func sendNotification() {
+        NotificationCenter.default.post(name: NSNotification.Name.init("reChechIsFavorite"), object: nil, userInfo: ["comic": selectedComic as Any])
+    }
+    
+    private func startListeningForFavoriteChange() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reChech(notification:)), name: NSNotification.Name.init("reChechIsFavorite"), object: nil)
+    }
+    
+    private func stopListeningForFavoriteChange() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func reChech(notification: NSNotification) {
+        if let theUserInfo = notification.userInfo as NSDictionary? {
+            if let comic = theUserInfo["comic"] as? Comic {
+                if comic.num == selectedComic.num {
+                    shouldCheckForUpdate = true
+                }
+            }
+        }
     }
     
     private func checkIfFavorite() {
@@ -188,21 +223,36 @@ extension ComicDetails: OptionsButtonWasTapped {
         if let theComicImage = comicImage.image {
             if let imageData = theComicImage.jpegData(compressionQuality: ImageCompressQuality.high.rawValue) {
                 coreDataManager.addComic(comic: selectedComic, imageData: imageData)
-                toggleIsFavoriteAndReload(added: true)
+                let favoriteChecked = coreDataManager.checkIfComicIsSaved(comic: selectedComic)
+                toggleIsFavoriteAndReload(added: true, success: favoriteChecked)
             }
         }
     }
     
     private func removeFromFavorite() {
         coreDataManager.removeComic(comic: selectedComic)
-        toggleIsFavoriteAndReload(added: false)
+        let existence = coreDataManager.checkIfComicIsSaved(comic: selectedComic)
+        let success = !existence
+        toggleIsFavoriteAndReload(added: false, success: success)
     }
     
-    private func toggleIsFavoriteAndReload(added: Bool) {
-        let alertMessage = added ? "\(self.title!) was added to your favorite list, you can access it in the favorite tab" : "\(self.title!) was removed from your favorite list"
-        isFavorite = !isFavorite
+    private func toggleIsFavoriteAndReload(added: Bool, success: Bool) {
+        if success {
+            justToggleAndReload()
+            
+            //Sending notification to all active instances of this class.
+            sendNotification()
+        }
+        let successMessage = added ? "\(self.title!) was added to your favorite list, you can access it in the favorite tab" : "\(self.title!) was removed from your favorite list"
+        let errorMessage = added ? "\(self.title!) could not be added, try again later" : "\(self.title!) could not be removed, please try again later"
+        let title = success ? "Success": "Error"
+        let usingMessage = success ? successMessage : errorMessage
+        present(alerts.presentStandardOKAlert(title: title, message: usingMessage, okActionTitle: "Ok"), animated: true, completion: nil)
+    }
+    
+    private func justToggleAndReload() {
+        checkIfFavorite()
         detailInfoTable.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-        present(alerts.presentStandardOKAlert(title: "Success", message: alertMessage, okActionTitle: "Ok"), animated: true, completion: nil)
     }
     
     func shareTapped() {

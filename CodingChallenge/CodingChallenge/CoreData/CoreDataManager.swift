@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol UpdateFavoriteComicDelegate {
-    func update(comics: [FavoriteComic])
+    func update(comics: [Comic])
 }
 
 class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
@@ -27,6 +27,21 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         fetchRequest = NSFetchRequest<FavoriteComic>.init(entityName: "FavoriteComic")
         fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "num", ascending: true)]
         fetchResultController = NSFetchedResultsController<FavoriteComic>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    }
+    
+    func getAllComics() -> [Comic] {
+        let allFavoriteComics = try! context.fetch(fetchRequest)
+        return convertFavoritesToComics(favoriteComics: allFavoriteComics)
+    }
+    
+    private func convertFavoritesToComics(favoriteComics: [FavoriteComic]) -> [Comic] {
+        var allComics = [Comic]()
+        for favoriteComic in favoriteComics {
+            if let convertedComic = favoriteComic.convertToComic(instance: favoriteComic) {
+                allComics.append(convertedComic)
+            }
+        }
+        return allComics
     }
     
     func checkIfComicIsSaved(comic: Comic) -> Bool {
@@ -72,7 +87,7 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
     
     private func runUpdateDelegate() {
         if let favoriteObjects = fetchResultController.fetchedObjects {
-            updateFavoriteComicDelegate?.update(comics: favoriteObjects)
+            updateFavoriteComicDelegate?.update(comics: convertFavoritesToComics(favoriteComics: favoriteObjects))
         } else {
             updateFavoriteComicDelegate?.update(comics: [])
         }

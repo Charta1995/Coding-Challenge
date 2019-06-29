@@ -20,16 +20,16 @@ class ComicCell: UICollectionViewCell {
     
     private var comic: Comic?
     
-    func configureCell(row: Int?) {
+    func configureCell(row: Int?, comic: Comic?) {
         setupLoader()
-        loadComic(row: row)
+        loadComic(row: row, comic: comic)
     }
     
     func getCurrentComic() -> Comic? {
         return comic
     }
     
-    private func loadComic(row: Int?) {
+    private func loadComic(row: Int?, comic: Comic?) {
         var comicCompleteUrl: String!
         if let theRow = row {
             let comicNumber = theRow + 1
@@ -39,27 +39,33 @@ class ComicCell: UICollectionViewCell {
             comicCompleteUrl = decodableWebRequest.current
         }
         
-        
-        if let theSavedComic = DataService.instance.getComic(url: comicCompleteUrl) {
-            updateComicAndCell(comic: theSavedComic)
+        if let coreDataComic = comic {
+            updateComicAndCell(comic: coreDataComic, isComic: true)
         } else {
-            toggleLoading(shouldStart: true)
-            decodableWebRequest.makeDecodableRequest(decodable: Comic.self, url: comicCompleteUrl, headers: nil, body: nil, httpMethod: .get) { (loadedComic) in
-                if let theLoadedComic = loadedComic {
-                    DataService.instance.setComic(url: comicCompleteUrl, comic: theLoadedComic)
-                    self.updateComicAndCell(comic: theLoadedComic)
+            if let theSavedComic = DataService.instance.getComic(url: comicCompleteUrl) {
+                updateComicAndCell(comic: theSavedComic, isComic: false)
+            } else {
+                toggleLoading(shouldStart: true)
+                decodableWebRequest.makeDecodableRequest(decodable: Comic.self, url: comicCompleteUrl, headers: nil, body: nil, httpMethod: .get) { (loadedComic) in
+                    if let theLoadedComic = loadedComic {
+                        DataService.instance.setComic(url: comicCompleteUrl, comic: theLoadedComic)
+                        self.updateComicAndCell(comic: theLoadedComic, isComic: false)
+                    }
                 }
             }
         }
     }
     
-    private func updateComicAndCell(comic: Comic) {
+    private func updateComicAndCell(comic: Comic, isComic: Bool) {
         self.comic = comic
         self.updateUI()
-        self.loadComicImage()
+        self.loadComicImage(isComic: isComic)
     }
     
-    private func loadComicImage() {
+    private func loadComicImage(isComic: Bool) {
+        if isComic {
+            self.toggleLoading(shouldStart: true)
+        }
         guard let comic = comic else { return }
         imageLoader.loadImage(url: comic.img) { (loadedComicImage) in
             if let theLoadedComicImage = loadedComicImage {

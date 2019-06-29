@@ -14,12 +14,17 @@ class ComicController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerComicCell()
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.showsVerticalScrollIndicator = false
         self.title = "Comics"
     }
     
+    private func registerComicCell() {
+        let comicNib = UINib(nibName: "ComicCell", bundle: nil)
+        comicCollectionView.register(comicNib, forCellWithReuseIdentifier: "comicCellId")
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toComicDesc" {
@@ -59,9 +64,9 @@ extension ComicController: UICollectionViewDataSource {
         cell.imageLoader.cancelRequest()
         
         if indexPath.section == 0 {
-            cell.configureCell(row: nil)
+            cell.configureCell(row: nil, comic: nil)
         } else {
-            cell.configureCell(row: indexPath.row)
+            cell.configureCell(row: indexPath.row, comic: nil)
         }
         
         return cell
@@ -86,6 +91,13 @@ extension ComicController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 375)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: UIScreen.main.bounds.width, height: 25)
+        }
+        return CGSize(width: UIScreen.main.bounds.width, height: 0)
     }
     
 }
