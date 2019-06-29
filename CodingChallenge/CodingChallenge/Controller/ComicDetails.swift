@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OptionsButtonWasTapped {
-    func addToFavoriteTapped()
+    func deleteOrAddToFavoriteTapped(delete: Bool)
     func shareTapped()
 }
 
@@ -23,8 +23,10 @@ class ComicDetails: UIViewController {
     var selectedComic: Comic!
     var cellContent = [ComicDetailsSection]()
     private let imageLoader = ImageLoader()
+    private let coreDataManager = CoreDataManager()
     private var completeUrlForSpesificComic: String!
     private var completeUrlForExplanation: String!
+    private var isFavorite: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +36,15 @@ class ComicDetails: UIViewController {
         completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)/)"
         completeUrlForExplanation = "\(imageLoader.comicExplanationUrl)\(selectedComic.num)"
         
+        checkIfFavorite()
         createCellContent()
         setupTableView()
         setUpScrollView()
         getComicImage()
+    }
+    
+    private func checkIfFavorite() {
+        isFavorite = coreDataManager.checkIfComicIsSaved(comic: selectedComic)
     }
     
     private func setupTableView() {
@@ -112,7 +119,7 @@ extension ComicDetails: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "optionsButtonCellID") as! OptionsButtonCell
-            cell.configureCell(comicDetails: self)
+            cell.configureCell(comicDetails: self, isFavorite: isFavorite)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "anyTextID") as! AnyTextCell
@@ -134,6 +141,13 @@ extension ComicDetails: UITableViewDelegate {
             }
         }
         return 20
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 107
+        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -168,8 +182,31 @@ extension ComicDetails: UIScrollViewDelegate {
 }
 
 extension ComicDetails: OptionsButtonWasTapped {
-    func addToFavoriteTapped() {
-        print("Add to favorite")
+    func deleteOrAddToFavoriteTapped(delete: Bool) {
+        if !delete {
+            addToFavorite()
+        } else {
+            removeFromFavorite()
+        }
+    }
+    
+    private func addToFavorite() {
+        if let theComicImage = comicImage.image {
+            if let imageData = theComicImage.jpegData(compressionQuality: ImageCompressQuality.high.rawValue) {
+                coreDataManager.addComic(comic: selectedComic, imageData: imageData)
+                toggleIsFavoriteAndReload()
+            }
+        }
+    }
+    
+    private func removeFromFavorite() {
+        coreDataManager.removeComic(comic: selectedComic)
+        toggleIsFavoriteAndReload()
+    }
+    
+    private func toggleIsFavoriteAndReload() {
+        isFavorite = !isFavorite
+        detailInfoTable.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
     func shareTapped() {
