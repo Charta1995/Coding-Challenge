@@ -33,6 +33,8 @@
 		5B0FA7E922C6E77000C20E1E /* OptionsButtonCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */; };
 		5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */; };
 		5B39F5EF22C78E96003997BF /* ComicDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */; };
+		5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5F022C79E12003997BF /* WebViewController.swift */; };
+		5B39F5F422C7A051003997BF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B39F5F322C7A051003997BF /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsButtonCellNib.xib; sourceTree = "<group>"; };
 		5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHeaderFooterView.swift; sourceTree = "<group>"; };
 		5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeaderFooterView.xib; sourceTree = "<group>"; };
+		5B39F5F022C79E12003997BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		5B39F5F322C7A051003997BF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B39F5F422C7A051003997BF /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +107,7 @@
 				5B07876322C537BB00A5E19C /* CodingChallenge */,
 				5B07877B22C537BB00A5E19C /* CodingChallengeTests */,
 				5B07876222C537BB00A5E19C /* Products */,
+				5B39F5F222C7A051003997BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +173,7 @@
 			children = (
 				5B07876622C537BB00A5E19C /* ComicController.swift */,
 				5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */,
+				5B39F5F022C79E12003997BF /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,6 +257,14 @@
 				5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */,
 			);
 			path = HeaderFooterView;
+			sourceTree = "<group>";
+		};
+		5B39F5F222C7A051003997BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B39F5F322C7A051003997BF /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +374,7 @@
 				5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */,
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */,
+				5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */,
 				5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
 				5B07876722C537BB00A5E19C /* ComicController.swift in Sources */,
