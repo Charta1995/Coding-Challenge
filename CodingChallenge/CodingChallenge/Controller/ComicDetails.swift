@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol OptionsButtonWasTapped {
+    func addToFavoriteTapped()
+    func shareTapped()
+}
+
 class ComicDetails: UIViewController {
     
     @IBOutlet weak var detailInfoTable: UITableView!
@@ -78,6 +83,16 @@ class ComicDetails: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToWebController" {
+            if let theUrl = sender as? String {
+                if let destinationViewController = segue.destination as? WebViewController {
+                    destinationViewController.url = theUrl
+                }
+            }
+        }
+    }
+    
 }
 
 extension ComicDetails: UITableViewDataSource {
@@ -92,7 +107,7 @@ extension ComicDetails: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "optionsButtonCellID") as! OptionsButtonCell
-            cell.configureCell()
+            cell.configureCell(comicDetails: self)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "anyTextID") as! AnyTextCell
@@ -125,10 +140,35 @@ extension ComicDetails: UITableViewDelegate {
         }
         return headerFooterView
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section > 0 {
+            let cellText = cellContent[indexPath.section - 1].content[indexPath.row]
+            switch cellText {
+            case "Visit website":
+                performSegue(withIdentifier: "goToWebController", sender: imageLoader.current)
+                break
+            case "Visit explanation":
+                let completeUrlForSpesicicComic = "\(imageLoader.spesificComicPartOne)\(selectedComic.num)\(imageLoader.spesificComicPathTwo)"
+                performSegue(withIdentifier: "goToWebController", sender: completeUrlForSpesicicComic)
+                break
+            default: break}
+        }
+    }
 }
  
 extension ComicDetails: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return comicImage
+    }
+}
+
+extension ComicDetails: OptionsButtonWasTapped {
+    func addToFavoriteTapped() {
+        print("Add to favorite")
+    }
+    
+    func shareTapped() {
+        print("Share")
     }
 }
