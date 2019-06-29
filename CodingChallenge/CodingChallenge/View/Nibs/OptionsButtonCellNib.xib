@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OptionsButtonCell" customModule="CodingChallenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-Ww-k7B">
+                    <rect key="frame" x="0.0" y="0.0" width="427" height="65"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6zj-Jy-KEN">
+                            <rect key="frame" x="8" y="8" width="411" height="49"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vk0-Cj-GIz">
+                                    <rect key="frame" x="0.0" y="0.0" width="200.5" height="49"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pR9-Qr-HCg">
+                                            <rect key="frame" x="78" y="2" width="45" height="45"/>
+                                            <state key="normal" image="icon">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addToFavorites:" destination="iN0-l3-epB" eventType="touchUpInside" id="HCz-4C-5vL"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="pR9-Qr-HCg" secondAttribute="bottom" constant="2" id="13w-Z7-VxS"/>
+                                        <constraint firstAttribute="trailing" secondItem="pR9-Qr-HCg" secondAttribute="trailing" constant="77.5" id="8OG-m9-0sN"/>
+                                        <constraint firstItem="pR9-Qr-HCg" firstAttribute="leading" secondItem="vk0-Cj-GIz" secondAttribute="leading" constant="78" id="Qdv-3b-76U"/>
+                                        <constraint firstItem="pR9-Qr-HCg" firstAttribute="top" secondItem="vk0-Cj-GIz" secondAttribute="top" constant="2" id="i5M-61-Awd"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obj-vi-VCH">
+                                    <rect key="frame" x="210.5" y="0.0" width="200.5" height="49"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFU-N6-o9T">
+                                            <rect key="frame" x="78" y="2" width="45" height="45"/>
+                                            <state key="normal" image="upload"/>
+                                            <connections>
+                                                <action selector="share:" destination="iN0-l3-epB" eventType="touchUpInside" id="Zrc-G8-Xtn"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="xFU-N6-o9T" secondAttribute="bottom" constant="2" id="DhK-jk-J4B"/>
+                                        <constraint firstItem="xFU-N6-o9T" firstAttribute="top" secondItem="obj-vi-VCH" secondAttribute="top" constant="2" id="c62-7E-Chj"/>
+                                        <constraint firstItem="xFU-N6-o9T" firstAttribute="leading" secondItem="obj-vi-VCH" secondAttribute="leading" constant="78" id="u9q-Ff-Ejz"/>
+                                        <constraint firstAttribute="trailing" secondItem="xFU-N6-o9T" secondAttribute="trailing" constant="77.5" id="uwx-Ab-IgD"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="6zj-Jy-KEN" firstAttribute="top" secondItem="gZZ-Ww-k7B" secondAttribute="top" constant="8" id="2eU-3C-99s"/>
+                        <constraint firstAttribute="bottom" secondItem="6zj-Jy-KEN" secondAttribute="bottom" constant="8" id="Fn6-gW-MMt"/>
+                        <constraint firstItem="6zj-Jy-KEN" firstAttribute="leading" secondItem="gZZ-Ww-k7B" secondAttribute="leading" constant="8" id="OI0-iU-4Qg"/>
+                        <constraint firstAttribute="trailing" secondItem="6zj-Jy-KEN" secondAttribute="trailing" constant="8" id="uih-mp-S3T"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gZZ-Ww-k7B" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="JII-07-Zgs"/>
+                <constraint firstAttribute="bottom" secondItem="gZZ-Ww-k7B" secondAttribute="bottom" id="g7b-61-L2w"/>
+                <constraint firstItem="gZZ-Ww-k7B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rOY-RK-pSc"/>
+                <constraint firstItem="gZZ-Ww-k7B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sL3-jW-y0r"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addToFavoritesBtn" destination="pR9-Qr-HCg" id="jza-qk-p7z"/>
+                <outlet property="shareBtn" destination="xFU-N6-o9T" id="5vR-4a-SN2"/>
+            </connections>
+            <point key="canvasLocation" x="57.24637681159421" y="313.72767857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon" width="512" height="512"/>
+        <image name="upload" width="512" height="512"/>
+    </resources>
+</document>
