@@ -97,7 +97,7 @@
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.84842586517333984" green="0.84907293319702148" blue="0.84852606058120728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eGV-mO-N6Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GIV-iy-1Px"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eGV-mO-N6Y" secondAttribute="bottom" id="h8C-l0-6e2"/>
