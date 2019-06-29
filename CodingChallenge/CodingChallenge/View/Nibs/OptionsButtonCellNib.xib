@@ -28,9 +28,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pR9-Qr-HCg">
                                             <rect key="frame" x="2" y="2" width="190.5" height="87"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <inset key="titleEdgeInsets" minX="-41" minY="49" maxX="0.0" maxY="0.0"/>
-                                            <inset key="imageEdgeInsets" minX="70" minY="-30" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="Add to favorites" image="icon">
+                                            <state key="normal" image="icon">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
@@ -51,9 +49,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFU-N6-o9T">
                                             <rect key="frame" x="10" y="2" width="176" height="87"/>
-                                            <inset key="titleEdgeInsets" minX="-44" minY="49" maxX="0.0" maxY="0.0"/>
-                                            <inset key="imageEdgeInsets" minX="47" minY="-30" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="Share" image="upload">
+                                            <state key="normal" image="upload">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
