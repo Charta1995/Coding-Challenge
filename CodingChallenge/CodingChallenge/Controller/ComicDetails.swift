@@ -34,6 +34,7 @@ class ComicDetails: UIViewController {
         detailInfoTable.dataSource = self
         detailInfoTable.delegate = self
         detailInfoTable.estimatedRowHeight = 70
+        detailInfoTable.rowHeight = UITableView.automaticDimension
         detailInfoTable.separatorStyle = .none
         setupNibs()
     }
