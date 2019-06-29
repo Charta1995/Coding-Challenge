@@ -232,9 +232,7 @@ extension ComicDetails: OptionsButtonWasTapped {
     private func removeFromFavorite() {
         coreDataManager.removeComic(comic: selectedComic)
         let existence = coreDataManager.checkIfComicIsSaved(comic: selectedComic)
-        print("Existence: \(existence)")
         let success = !existence
-        print("Success: \(success)")
         toggleIsFavoriteAndReload(added: false, success: success)
     }
     
