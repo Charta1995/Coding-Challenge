@@ -14,9 +14,18 @@ class OptionsButtonCell: UITableViewCell {
     @IBOutlet weak var shareBtn: UIButton!
     
     func configureCell() {
-        
+        self.selectionStyle = .none
+        configureAddToFavoritesBtn()
+        confogireShareButton()
     }
     
+    private func configureAddToFavoritesBtn() {
+        addToFavoritesBtn.imageView?.contentMode = .scaleAspectFit
+    }
+    
+    private func confogireShareButton() {
+        shareBtn.imageView?.contentMode = .scaleAspectFit
+    }
     
     @IBAction func addToFavorites(_ sender: UIButton!) {
         
