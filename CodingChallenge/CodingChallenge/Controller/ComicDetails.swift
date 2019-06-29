@@ -24,6 +24,7 @@ class ComicDetails: UIViewController {
     var cellContent = [ComicDetailsSection]()
     private let imageLoader = ImageLoader()
     private let coreDataManager = CoreDataManager()
+    private let alerts = Alerts()
     private var completeUrlForSpesificComic: String!
     private var completeUrlForExplanation: String!
     private var isFavorite: Bool!
@@ -33,7 +34,7 @@ class ComicDetails: UIViewController {
         title = selectedComic.title == selectedComic.safe_title ? selectedComic.title : selectedComic.safe_title
         detailInfoTable.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
         
-        completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)/)"
+        completeUrlForSpesificComic = "\(imageLoader.spesificVisitUrl)\(selectedComic.num)"
         completeUrlForExplanation = "\(imageLoader.comicExplanationUrl)\(selectedComic.num)"
         
         checkIfFavorite()
@@ -143,13 +144,6 @@ extension ComicDetails: UITableViewDelegate {
         return 20
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 107
-        }
-        return UITableView.automaticDimension
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "comicDetailHeaderFooterView") as! ComicDetailHeaderFooterView
         if section > 0 {
@@ -194,24 +188,25 @@ extension ComicDetails: OptionsButtonWasTapped {
         if let theComicImage = comicImage.image {
             if let imageData = theComicImage.jpegData(compressionQuality: ImageCompressQuality.high.rawValue) {
                 coreDataManager.addComic(comic: selectedComic, imageData: imageData)
-                toggleIsFavoriteAndReload()
+                toggleIsFavoriteAndReload(added: true)
             }
         }
     }
     
     private func removeFromFavorite() {
         coreDataManager.removeComic(comic: selectedComic)
-        toggleIsFavoriteAndReload()
+        toggleIsFavoriteAndReload(added: false)
     }
     
-    private func toggleIsFavoriteAndReload() {
+    private func toggleIsFavoriteAndReload(added: Bool) {
+        let alertMessage = added ? "\(self.title!) was added to your favorite list, you can access it in the favorite tab" : "\(self.title!) was removed from your favorite list"
         isFavorite = !isFavorite
         detailInfoTable.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        present(alerts.presentStandardOKAlert(title: "Success", message: alertMessage, okActionTitle: "Ok"), animated: true, completion: nil)
     }
     
     func shareTapped() {
-        let shareActivity = UIActivityViewController(activityItems: selectedComic.getContentToShare(image: comicImage.image, comicOnWeb: completeUrlForSpesificComic, comicExplantaion: completeUrlForExplanation), applicationActivities: nil)
-        shareActivity.popoverPresentationController?.sourceView = view
-        present(shareActivity, animated: true, completion: nil)
+        let contentToShare = selectedComic.getContentToShare(image: comicImage.image, comicOnWeb: completeUrlForSpesificComic, comicExplantaion: completeUrlForExplanation)
+        present(alerts.presentShareController(contentToShare: contentToShare, viewHolder: self.view), animated: true, completion: nil)
     }
 }
