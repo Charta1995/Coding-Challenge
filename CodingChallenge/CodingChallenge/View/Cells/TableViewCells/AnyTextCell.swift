@@ -13,14 +13,14 @@ class AnyTextCell: UITableViewCell {
     @IBOutlet weak var anyText: UILabel!
     @IBOutlet weak var redirectCell: UITableViewCell!
     
-    func configureCell(text: String, isTranscript: Bool, isRedirectable: Bool) {
-        self.selectionStyle = .none
-        setupUI(text: text, isTranscript: isTranscript, isRedirectable: isRedirectable)
+    func configureCell(text: String, isRedirectable: Bool) {
+        selectionStyle = .none
+        setupUI(text: text, isRedirectable: isRedirectable)
     }
     
-    private func setupUI(text: String, isTranscript: Bool, isRedirectable: Bool) {
+    private func setupUI(text: String, isRedirectable: Bool) {
         setupRedirectCell(text: text, isRedirectable: isRedirectable)
-        setupAnyText(text: text, isTranscript: isTranscript, isRedirectable: isRedirectable)
+        setupAnyText(text: text, isRedirectable: isRedirectable)
     }
     
     private func setupRedirectCell(text: String, isRedirectable: Bool) {
@@ -28,13 +28,9 @@ class AnyTextCell: UITableViewCell {
         redirectCell.textLabel?.text = text
     }
     
-    private func setupAnyText(text: String, isTranscript: Bool, isRedirectable: Bool) {
+    private func setupAnyText(text: String, isRedirectable: Bool) {
         anyText.isHidden = isRedirectable
-        anyText.text = isTranscript ? formatTranscript(transcript: text) : text
-    }
-    
-    private func formatTranscript(transcript: String) -> String {
-        return ""
+        anyText.text = text
     }
     
 }
