@@ -14,9 +14,18 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
     var url: String!
+    private let webRequestShared = WebRequestShared()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Web"
+        loadUrl()
+    }
+    
+    private func loadUrl() {
+        if let theUrlRequest = webRequestShared.createUrlRequest(url: url, headers: nil, httpMethod: .get, body: nil) {
+            webView.load(theUrlRequest)
+        }
     }
     
 }
