@@ -22,10 +22,10 @@ class ComicController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
+        if segue.identifier == "toComicDesc" {
             if let theComic = sender as? Comic {
                 if let theDestination = segue.destination as? ComicDetails {
-                    
+                    theDestination.selectedComic = theComic
                 }
             }
         }
