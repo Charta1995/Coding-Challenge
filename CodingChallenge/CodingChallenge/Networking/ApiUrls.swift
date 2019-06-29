@@ -13,6 +13,7 @@ class ApiUrls {
     let spesificComicPartOne = "http://xkcd.com/"
     let spesificComicPathTwo = "/info.0.json"
     let comicSeach = "https://relevantxkcd.appspot.com/process?action=xkcd&query=COMPUTER"
-    let comicExplanationUrl = "http://www.explainxkcd.com/2168"
+    let comicExplanationUrl = "http://www.explainxkcd.com/"
+    let spesificVisitUrl = "https://xkcd.com/"
     let comicImageUrlStart = "https://www.explainxkcd.com/"
 }
