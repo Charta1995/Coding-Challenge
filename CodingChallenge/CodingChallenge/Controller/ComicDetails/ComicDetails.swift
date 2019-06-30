@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol OptionsButtonWasTapped {
-    func deleteOrAddToFavoriteTapped(delete: Bool)
-    func shareTapped()
-}
-
 class ComicDetails: UIViewController {
     
     @IBOutlet weak var detailInfoTable: UITableView!
