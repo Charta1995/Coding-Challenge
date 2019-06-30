@@ -26,6 +26,9 @@ class FavoriteViewController: UIViewController {
         settingUpCoreDataDataSource()
     }
     
+    /*
+        Setting this class up to be the listener for coredata changes
+     */
     private func settingUpCoreDataDataSource() {
         coreDataManager.setDelegate(viewControllerListener: self)
     }
@@ -55,6 +58,9 @@ extension FavoriteViewController: UICollectionViewDataSource {
     }
 }
 
+/*
+    Updating UI based on coredata update.
+ */
 extension FavoriteViewController: UpdateFavoriteComicDelegate {
     func update(comics: [Comic]) {
         allComics = comics
