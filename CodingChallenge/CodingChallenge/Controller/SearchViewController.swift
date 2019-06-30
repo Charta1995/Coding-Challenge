@@ -40,21 +40,29 @@ class SearchViewController: UIViewController {
         let nib = UINib(nibName: "ComicCell", bundle: nil)
         searchResultCollectionView.register(nib, forCellWithReuseIdentifier: "searchComicCellId")
     }
-    
+
     private func search(searchText: String) {
         searchBar.resignFirstResponder()
         let loadingAlert = alerts.presentLoadingAlert {
             self.alerts.forceClose()
             self.whenRequestIsCanceled(searchText: nil)
+            self.searchBar.becomeFirstResponder()
         }
-        present(loadingAlert, animated: true, completion: nil)
         
-        textWebReqest.makeTextWebRequest(searchText: searchText, headers: nil, body: nil, httpMethod: .get) { (result) in
+        textWebReqest.makeTextWebRequest(searchText: searchText, headers: nil, body: nil, httpMethod: .get, finished: { (result) in
             self.searchResult = result
-            self.desriptionText.text = result != nil ? "" : "Search for a comic, either with text, number or a mix"
+            self.updateDescriptioonText(isShowingContent: result != nil)
             self.searchResultCollectionView.reloadData()
             loadingAlert.dismiss(animated: true, completion: nil)
+        }) { (needToShowLoading) in
+            if needToShowLoading {
+                self.present(loadingAlert, animated: true, completion: nil)
+            }
         }
+    }
+    
+    private func updateDescriptioonText(isShowingContent: Bool) {
+        self.desriptionText.text = !isShowingContent ? "" : "Search for a comic, either with text, number or a mix"
     }
     
     private func whenRequestIsCanceled(searchText: String?) {
@@ -63,18 +71,19 @@ class SearchViewController: UIViewController {
         if let searchText = searchText {
             if searchText == "" {
                 reset()
+            } else {
+                searchBar.resignFirstResponder()
             }
         } else {
             reset()
         }
         
-        searchBar.resignFirstResponder()
     }
     
     private func reset() {
+        updateDescriptioonText(isShowingContent: false)
         searchResult = nil
         searchResultCollectionView.reloadData()
-        desriptionText.text = "Search for a comic, either with text, number or a mix"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -132,6 +141,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         whenRequestIsCanceled(searchText: searchBar.text)
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
