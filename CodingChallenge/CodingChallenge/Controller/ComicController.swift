@@ -64,9 +64,9 @@ extension ComicController: UICollectionViewDataSource {
         cell.imageLoader.cancelRequest()
         
         if indexPath.section == 0 {
-            cell.configureCell(row: nil, comic: nil)
+            cell.configureCell(row: nil, comic: nil, searchRow: nil)
         } else {
-            cell.configureCell(row: indexPath.row, comic: nil)
+            cell.configureCell(row: indexPath.row, comic: nil, searchRow: nil)
         }
         
         return cell
