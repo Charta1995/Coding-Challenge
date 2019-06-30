@@ -24,7 +24,9 @@ class DecodableWebRequest: WebRequestShared {
                 
                 if error == nil {
                     guard let data = data else {
-                        finished(decodableObject)
+                        DispatchQueue.main.async {
+                            finished(decodableObject)
+                        }
                         return
                     }
                     
@@ -35,10 +37,14 @@ class DecodableWebRequest: WebRequestShared {
                         }
                     } catch let error {
                         print("Error parsing data to decodable object: \(error)")
-                        finished(decodableObject)
+                        DispatchQueue.main.async {
+                            finished(decodableObject)
+                        }
                     }
                 } else {
-                    finished(decodableObject)
+                    DispatchQueue.main.async {
+                        finished(decodableObject)
+                    }
                 }
             }
             request?.resume()
