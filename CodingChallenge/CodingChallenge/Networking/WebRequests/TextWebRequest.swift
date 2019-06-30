@@ -16,8 +16,9 @@ class TextWebRequest: WebRequestShared {
         request?.cancel()
     }
     
-    func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: ComicSearchResult?) -> (), needToShowLoading: @escaping (_ needToShow: Bool) -> ()) {
+    func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: [ComicSearch]) -> (), needToShowLoading: @escaping (_ needToShow: Bool) -> ()) {
         let completeUrl = "\(comicSeach)\(searchText)"
+        var comicSearch = [ComicSearch]()
         if let savedSearchResult = DataService.instance.getComicSearchResult(url: completeUrl) {
             needToShowLoading(false)
             checkForMainThread {
@@ -30,17 +31,17 @@ class TextWebRequest: WebRequestShared {
                     if error == nil {
                         guard let data = data, let dataString = String(data: data, encoding: .utf8) else {
                             self.checkForMainThread {
-                                finished(nil)
+                                finished(comicSearch)
                             }
                             return
                         }
-                        let comicSearchResult = self.parseDataString(dataString: dataString, completeUrl: completeUrl)
+                        comicSearch = self.parseDataString(dataString: dataString, completeUrl: completeUrl)
                         self.checkForMainThread {
-                            finished(comicSearchResult)
+                            finished(comicSearch)
                         }
                     } else {
                         self.checkForMainThread {
-                            finished(nil)
+                            finished(comicSearch)
                         }
                     }
                 }
@@ -50,16 +51,15 @@ class TextWebRequest: WebRequestShared {
         }
     }
     
-    private func parseDataString(dataString: String, completeUrl: String) -> ComicSearchResult {
+    private func parseDataString(dataString: String, completeUrl: String) -> [ComicSearch] {
         let lines = dataString.split(separator: "\n")
 
-        let relevance = String(lines[0])
         var comicSearchArray = [ComicSearch]()
         var index = 2
         while index < lines.count {
             let fractions = lines[index].split(separator: " ")
-            var id: Int!
-            var imageUrl: String!
+            var id: Int?
+            var imageUrl: String?
             if fractions.count == 2 {
                 id = Int(String(fractions[0]))
                 imageUrl = String(fractions[1])
@@ -71,9 +71,8 @@ class TextWebRequest: WebRequestShared {
             index += 2
         }
         
-        let comicSearchResultRelevance = Double(relevance)
-        let comicSearchResult = ComicSearchResult(relevance: comicSearchResultRelevance, comicSearches: comicSearchArray)
-        DataService.instance.setComicSearchResult(url: completeUrl, comicSearchResult: comicSearchResult)
-        return comicSearchResult
+        DataService.instance.setComicSearchResult(url: completeUrl, comicSearchResult: comicSearchArray)
+        return comicSearchArray
+        
     }
 }
