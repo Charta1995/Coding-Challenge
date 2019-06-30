@@ -41,6 +41,7 @@
 		5B39F5FE22C7ECDA003997BF /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5FD22C7ECDA003997BF /* Alerts.swift */; };
 		5B39F60022C7F2B5003997BF /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */; };
 		5B39F60222C7FA4A003997BF /* ComicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F60122C7FA4A003997BF /* ComicCell.xib */; };
+		5B39F60422C815D7003997BF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F60322C815D7003997BF /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		5B39F5FD22C7ECDA003997BF /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5B39F60122C7FA4A003997BF /* ComicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCell.xib; sourceTree = "<group>"; };
+		5B39F60322C815D7003997BF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */,
 				5B39F5F022C79E12003997BF /* WebViewController.swift */,
 				5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */,
+				5B39F60322C815D7003997BF /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
 				5B07876722C537BB00A5E19C /* ComicController.swift in Sources */,
+				5B39F60422C815D7003997BF /* SearchViewController.swift in Sources */,
 				5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */,
 				5B07876522C537BB00A5E19C /* AppDelegate.swift in Sources */,
 				5B39F5FE22C7ECDA003997BF /* Alerts.swift in Sources */,
