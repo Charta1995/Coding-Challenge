@@ -9,8 +9,8 @@
 import Foundation
 
 struct ComicSearch {
-    var id: Int?
-    var imageUrlEndpoint: String?
+    var id: Int!
+    var imageUrlEndpoint: String!
     
     init?(id: Int?, imageUrlEndpoint: String?, imageUrlStart: String) {
         self.id = id

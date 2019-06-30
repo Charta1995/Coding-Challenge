@@ -61,7 +61,7 @@ extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCellId", for: indexPath) as! ComicCell
         cell.imageLoader.cancelRequest()
-        cell.configureCell(row: nil, comic: allComics[indexPath.row])
+        cell.configureCell(row: nil, comic: allComics[indexPath.row], searchRow: nil)
         return cell
     }
 }

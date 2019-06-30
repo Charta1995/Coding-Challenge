@@ -29,7 +29,9 @@ class ImageLoader: WebRequestShared {
             dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, _, error) in
                 if error == nil {
                     guard let data = data, let image = UIImage(data: data) else {
-                        finishedLoadedImage(nil)
+                        DispatchQueue.main.async {
+                            finishedLoadedImage(nil)
+                        }
                         return
                     }
                     DataService.instance.setimage(url: url, image: image)
@@ -37,7 +39,9 @@ class ImageLoader: WebRequestShared {
                         finishedLoadedImage(image)
                     }
                 } else {
-                    finishedLoadedImage(nil)
+                    DispatchQueue.main.async {
+                        finishedLoadedImage(nil)
+                    }
                 }
             })
             dataTask?.resume()

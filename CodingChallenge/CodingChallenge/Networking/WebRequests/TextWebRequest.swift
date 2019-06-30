@@ -16,46 +16,60 @@ class TextWebRequest: WebRequestShared {
         request?.cancel()
     }
     
-    func makeTextWebRequest(url: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: ComicSearchResult?) -> ()) {
-        if let urlRequest = createUrlRequest(url: url, headers: headers, httpMethod: httpMethod, body: body) {
-            request = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
-                if error == nil {
-                    guard let data = data, let dataString = String(data: data, encoding: .utf8) else {
-                        finished(nil)
-                        return
+    func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: ComicSearchResult?) -> ()) {
+        let completeUrl = "\(comicSeach)\(searchText)"
+        if let savedSearchResult = DataService.instance.getComicSearchResult(url: completeUrl) {
+            finished(savedSearchResult)
+        } else {
+            if let urlRequest = createUrlRequest(url: completeUrl, headers: headers, httpMethod: httpMethod, body: body) {
+                request = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+                    if error == nil {
+                        guard let data = data, let dataString = String(data: data, encoding: .utf8) else {
+                            DispatchQueue.main.async {
+                                finished(nil)
+                            }
+                            return
+                        }
+                        let comicSearchResult = self.parseDataString(dataString: dataString, completeUrl: completeUrl)
+                        DispatchQueue.main.async {
+                            finished(comicSearchResult)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            finished(nil)
+                        }
                     }
-                    let comicSearchResult = self.parseDataString(dataString: dataString)
-                    finished(comicSearchResult)
-                } else {
-                    finished(nil)
                 }
+                
+                request?.resume()
             }
-            request?.resume()
         }
     }
     
-    private func parseDataString(dataString: String) -> ComicSearchResult {
-        let fractions = dataString.split(separator: " ")
-        
-        let relevance = String(fractions[0])
+    private func parseDataString(dataString: String, completeUrl: String) -> ComicSearchResult {
+        let lines = dataString.split(separator: "\n")
+
+        let relevance = String(lines[0])
         var comicSearchArray = [ComicSearch]()
         var index = 2
-        while index < fractions.count {
-            
-            let comicIdString = String(fractions[index])
-            let comicId = Int(comicIdString)
-            let imageUrlEndpoint = String(fractions[index])
-            
-            if let comicSearch = ComicSearch(id: comicId, imageUrlEndpoint: imageUrlEndpoint, imageUrlStart: comicImageUrlStart) {
+        while index < lines.count {
+            let fractions = lines[index].split(separator: " ")
+            var id: Int!
+            var imageUrl: String!
+            if fractions.count == 2 {
+                id = Int(String(fractions[0]))
+                imageUrl = String(fractions[1])
+            }
+            if let comicSearch = ComicSearch(id: id, imageUrlEndpoint: imageUrl, imageUrlStart: comicImageUrlStart) {
                 comicSearchArray.append(comicSearch)
             }
             
-            index += 1
+            index += 2
         }
         
         let comicSearchResultRelevance = Double(relevance)
         let comicSearchResult = ComicSearchResult(relevance: comicSearchResultRelevance, comicSearches: comicSearchArray)
-        
+        DataService.instance.setComicSearchResult(url: completeUrl, comicSearchResult: comicSearchResult)
         return comicSearchResult
     }
 }
