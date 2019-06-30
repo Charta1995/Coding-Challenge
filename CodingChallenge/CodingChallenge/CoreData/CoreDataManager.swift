@@ -29,10 +29,18 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         fetchResultController = NSFetchedResultsController<FavoriteComic>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
     
+    /*
+        Get all comics saved
+     */
+    
     func getAllComics() -> [Comic] {
         let allFavoriteComics = try! context.fetch(fetchRequest)
         return convertFavoritesToComics(favoriteComics: allFavoriteComics)
     }
+    
+    /*
+        Converting an array og favoriteComics to an array of Comics and returns the array of Comics
+     */
     
     private func convertFavoritesToComics(favoriteComics: [FavoriteComic]) -> [Comic] {
         var allComics = [Comic]()
@@ -44,6 +52,9 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         return allComics
     }
     
+    /*
+        Returning the result of if the comic extists or not
+     */
     func checkIfComicIsSaved(comic: Comic) -> Bool {
         let favoriteComics = try! context.fetch(fetchRequest)
         for favoriteComic in favoriteComics {
@@ -54,11 +65,17 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         return false
     }
     
+    /*
+        Saving a comic to coredata
+     */
     func addComic(comic: Comic, imageData: Data) {
         _ = FavoriteComic(result: comic.createDictionaryForSaving(imageData: imageData), managedObjectContext: context)
         appDelegate.saveContext()
     }
     
+    /*
+        Removing comic from coredata
+     */
     func removeComic(comic: Comic) {
         let favoriteComics = try! context.fetch(fetchRequest)
         for favoriteComic in favoriteComics {
@@ -70,6 +87,10 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
+    /*
+        Setting the delegate to the listener for coredata updates.
+        To get data at once, the current data is fetched and the listener are updated.
+     */
     func setDelegate(viewControllerListener: NSObject) {
         fetchResultController.delegate = self
         updateFavoriteComicDelegate = viewControllerListener as? UpdateFavoriteComicDelegate
@@ -85,6 +106,10 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         runUpdateDelegate()
     }
     
+    /*
+        This method is retrieving the objects in coredata for the spesific table.
+        The data is sent to the listener.
+     */
     private func runUpdateDelegate() {
         if let favoriteObjects = fetchResultController.fetchedObjects {
             updateFavoriteComicDelegate?.update(comics: convertFavoritesToComics(favoriteComics: favoriteObjects))
