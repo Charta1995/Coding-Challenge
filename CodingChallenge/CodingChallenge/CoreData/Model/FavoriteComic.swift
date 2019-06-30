@@ -35,10 +35,10 @@ public class FavoriteComic: NSManagedObject {
     }
     
     func convertToComic(instance: FavoriteComic) -> Comic? {
-        guard let month = instance.month, let link = instance.link, let year = instance.year, let news = instance.news, let safe_title = instance.safe_title, let transcript = instance.transcript, let alt = instance.alt, let img = instance.img, let title = instance.title, let day = instance.day else {
+        guard let month = instance.month, let link = instance.link, let year = instance.year, let news = instance.news, let safe_title = instance.safe_title, let transcript = instance.transcript, let alt = instance.alt, let img = instance.img, let title = instance.title, let day = instance.day, let imageData = instance.imageData else {
             return nil
         }
-        let comic = Comic(month: month, num: Int(instance.num), link: link, year: year, news: news, safe_title: safe_title, transcript: transcript, alt: alt, img: img, title: title, day: day)
+        let comic = Comic(month: month, num: Int(instance.num), link: link, year: year, news: news, safe_title: safe_title, transcript: transcript, alt: alt, img: img, title: title, day: day, imageData: imageData)
         return comic
     }
     
