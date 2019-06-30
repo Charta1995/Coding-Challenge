@@ -18,28 +18,30 @@ class ImageLoader: WebRequestShared {
     
     func loadImage(url: String, finishedLoadedImage: @escaping (_ loadedImage: UIImage?) -> ()) {
         if let savedImage = DataService.instance.getAnImage(url: url) {
-            DispatchQueue.main.async {
+            checkForMainThread {
                 finishedLoadedImage(savedImage)
             }
         } else {
             guard let urlRequest = createUrlRequest(url: url, headers: nil, httpMethod: .get, body: nil) else {
-                finishedLoadedImage(nil)
+                checkForMainThread {
+                    finishedLoadedImage(nil)
+                }
                 return
             }
             dataTask = URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, _, error) in
                 if error == nil {
                     guard let data = data, let image = UIImage(data: data) else {
-                        DispatchQueue.main.async {
+                        self.checkForMainThread {
                             finishedLoadedImage(nil)
                         }
                         return
                     }
                     DataService.instance.setimage(url: url, image: image)
-                    DispatchQueue.main.async {
+                    self.checkForMainThread {
                         finishedLoadedImage(image)
                     }
                 } else {
-                    DispatchQueue.main.async {
+                    self.checkForMainThread {
                         finishedLoadedImage(nil)
                     }
                 }
