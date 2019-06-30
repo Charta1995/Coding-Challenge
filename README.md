@@ -7,7 +7,7 @@ I know this app is supposed to be a MVP with some features, but i wanted to make
 What i would've made for the MVP would have been:
 - Browse through the comics 
 - See comic details and its description 
-- Search for comics by the comic number as well as test.
+- Search for comics by the comic number as well as text.
 This is because the customer wanted a comic VIEWER app, and to just see the comics, you dont necessarily need more features to do that.
 I think the other features the customer wanted is want-to-have features.
 
