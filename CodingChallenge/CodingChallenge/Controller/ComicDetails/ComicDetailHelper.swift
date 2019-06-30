@@ -9,6 +9,10 @@
 import UIKit
 class ComicDetailHelper {
     
+    /*
+        This class is setting up ComicDetails
+     */
+    
     private var selectedComic: Comic!
     var cellContent = [ComicDetailsSection]()
     private let imageLoader = ImageLoader()
