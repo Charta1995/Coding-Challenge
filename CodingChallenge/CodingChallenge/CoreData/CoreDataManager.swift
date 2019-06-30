@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-protocol UpdateFavoriteComicDelegate {
-    func update(comics: [Comic])
-}
-
 class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
     
     var appDelegate: AppDelegate!
