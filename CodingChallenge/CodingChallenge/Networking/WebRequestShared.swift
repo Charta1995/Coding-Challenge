@@ -7,7 +7,10 @@
 //
 
 import Foundation
-
+/*
+    This class has methods that webrequest files needs.
+    This file is responsible for creating urlRequest, creating data from dictionary and check thread.
+ */
 class WebRequestShared: ApiUrls {
     func createUrlRequest(url: String, headers: [String: Any]?, httpMethod: HttpMethod, body: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: url) else {
