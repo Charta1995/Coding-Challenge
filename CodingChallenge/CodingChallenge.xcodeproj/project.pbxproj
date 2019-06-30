@@ -31,6 +31,7 @@
 		5B0FA7E222C6E2A500C20E1E /* ComicDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E122C6E2A500C20E1E /* ComicDetailsSection.swift */; };
 		5B0FA7E722C6E75A00C20E1E /* AnyTextCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E622C6E75A00C20E1E /* AnyTextCellNib.xib */; };
 		5B0FA7E922C6E77000C20E1E /* OptionsButtonCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */; };
+		5B24C12122C8E2E8003A64E5 /* FavoriteComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */; };
 		5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */; };
 		5B39F5EF22C78E96003997BF /* ComicDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */; };
 		5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5F022C79E12003997BF /* WebViewController.swift */; };
@@ -83,6 +84,7 @@
 		5B0FA7E122C6E2A500C20E1E /* ComicDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsSection.swift; sourceTree = "<group>"; };
 		5B0FA7E622C6E75A00C20E1E /* AnyTextCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnyTextCellNib.xib; sourceTree = "<group>"; };
 		5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsButtonCellNib.xib; sourceTree = "<group>"; };
+		5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicTests.swift; sourceTree = "<group>"; };
 		5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHeaderFooterView.swift; sourceTree = "<group>"; };
 		5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeaderFooterView.xib; sourceTree = "<group>"; };
 		5B39F5F022C79E12003997BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				5B07877C22C537BB00A5E19C /* CodingChallengeTests.swift */,
 				5B07877E22C537BB00A5E19C /* Info.plist */,
+				5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */,
 			);
 			path = CodingChallengeTests;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B07877D22C537BB00A5E19C /* CodingChallengeTests.swift in Sources */,
+				5B24C12122C8E2E8003A64E5 /* FavoriteComicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
