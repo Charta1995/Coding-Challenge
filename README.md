@@ -20,7 +20,7 @@ Features i managed to create within deadline:
 - Send comics to others
 - Support multiple form factors
 
-To build this project i have used MVC pattern and followed SPA and tried to make the code as reusable as possible.
+To build this project i have used MVC pattern and followed single responsibility principle and tried to make the code as reusable as possible.
 
 I have thought of egde cases, and quality cases. 
 For example i have used a tabbar controller to show ComicBrowsing page, Favorite page and Searchpage. These pages is navigating to ComicDetail page. ComicDetail page is where you can add favorites (among other things), so i have added a notification system to update every active instance of that class when a user adds or deletes a favorite comic.
