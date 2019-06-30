@@ -16,6 +16,11 @@ class TextWebRequest: WebRequestShared {
         request?.cancel()
     }
     
+    /*
+        This method is for searching, where it accepts headers, body and CRUD methods.
+        When the request is done, the results are saved and are used if possible.
+     */
+    
     func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: [ComicSearch]) -> (), needToShowLoading: @escaping (_ needToShow: Bool) -> ()) {
         let completeUrl = "\(comicSeach)\(searchText)"
         var comicSearch = [ComicSearch]()
@@ -51,6 +56,9 @@ class TextWebRequest: WebRequestShared {
         }
     }
     
+    /*
+        Parsing fractions of the datastring into ComicSearch objects
+     */
     private func parseDataString(dataString: String, completeUrl: String) -> [ComicSearch] {
         let lines = dataString.split(separator: "\n")
 
