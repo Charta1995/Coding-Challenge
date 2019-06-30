@@ -31,6 +31,9 @@ class ComicDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+            Setting up
+         */
         comicDetailHelper = ComicDetailHelper(selectedComic: selectedComic, contentTable: detailInfoTable, imageZoomScrollView: imageZoomScrollVie, descriptionLbl: comicDescription, comicImage: comicImage, delegateListener: self)
         title = comicDetailHelper.getTitle()
         checkIfFavorite()
@@ -48,16 +51,16 @@ class ComicDetails: UIViewController {
         }
     }
     
+    /*Checking if there is any need to update add favorite button*/
     @objc func reChech(notification: NSNotification) {
         if let theUserInfo = notification.userInfo as NSDictionary? {
             if let comic = theUserInfo["comic"] as? Comic {
-                if comic.num == selectedComic.num {
-                    shouldCheckForUpdate = true
-                }
+                shouldCheckForUpdate = comic.num == selectedComic.num
             }
         }
     }
     
+    /*Checks if the comic is already a favorite and configures the add favorite button*/
     private func checkIfFavorite() {
         isFavorite = coreDataManager.checkIfComicIsSaved(comic: selectedComic)
     }
@@ -102,19 +105,23 @@ extension ComicDetails: UITableViewDelegate {
             return 1
         } else {
             if section > 0 {
+                //If there is text
                 if comicDetailHelper.cellContent[section - 1].contentDescription != "" {
                     return 40
                 }
             }
         }
+        //Just space
         return 20
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: DataService.instance.headerFooterViewNib) as! ComicDetailHeaderFooterView
         if section > 0 {
+            //If there is text
             headerFooterView.configureHeaderFooterView(text: comicDetailHelper.cellContent[section - 1].contentDescription)
         } else {
+            //Just space
             headerFooterView.configureHeaderFooterView(text: "")
         }
         return headerFooterView
@@ -137,6 +144,7 @@ extension ComicDetails: UITableViewDelegate {
 
 /* ScrollView methods */
 extension ComicDetails {
+    //Does the image zoomable.
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return comicImage
     }
@@ -168,6 +176,10 @@ extension ComicDetails: OptionsButtonWasTapped {
         toggleIsFavoriteAndReload(added: false, success: success)
     }
     
+    /*
+        This method is updating the addFavorite button and sends message to other insances og this class to do the same if either delete or add to coredata was successful.
+        An alert is displayed to show if the coredata operataion was successful or not
+     */
     private func toggleIsFavoriteAndReload(added: Bool, success: Bool) {
         if success {
             justToggleAndReload()
@@ -182,11 +194,17 @@ extension ComicDetails: OptionsButtonWasTapped {
         present(alerts.presentStandardOKAlert(title: title, message: usingMessage, okActionTitle: "Ok"), animated: true, completion: nil)
     }
     
+    /*
+        Checking if the selected comic is still a favorite or not and updates the addFavoriteButton
+     */
     private func justToggleAndReload() {
         checkIfFavorite()
         detailInfoTable.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
+    /*
+        Opens a share dialog with selecedComic data in it.
+     */
     func shareTapped() {
         let contentToShare = selectedComic.getContentToShare(image: comicImage.image, comicOnWeb: comicDetailHelper.completeUrlForSpesificComic, comicExplantaion: comicDetailHelper.completeUrlForExplanation)
         present(alerts.presentShareController(contentToShare: contentToShare, viewHolder: self.view), animated: true, completion: nil)
