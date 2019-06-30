@@ -34,6 +34,10 @@ public class FavoriteComic: NSManagedObject {
         self.imageData = imageData
     }
     
+    /*
+        Creating and returning a Comic object with FavoriteComic information
+     */
+    
     func convertToComic() -> Comic? {
         guard let month = month, let link = link, let year = year, let news = news, let safe_title = safe_title, let transcript = transcript, let alt = alt, let img = img, let title = title, let day = day, let imageData = imageData else {
             return nil
