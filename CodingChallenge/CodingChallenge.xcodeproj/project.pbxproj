@@ -33,6 +33,7 @@
 		5B24C12122C8E2E8003A64E5 /* FavoriteComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */; };
 		5B24C12522C8F286003A64E5 /* SharedExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12422C8F286003A64E5 /* SharedExtentions.swift */; };
 		5B24C12822C8FDAA003A64E5 /* ComicDetailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12722C8FDAA003A64E5 /* ComicDetailHelper.swift */; };
+		5B24C12A22C917CA003A64E5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12922C917CA003A64E5 /* Protocols.swift */; };
 		5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */; };
 		5B39F5EF22C78E96003997BF /* ComicDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */; };
 		5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5F022C79E12003997BF /* WebViewController.swift */; };
@@ -87,6 +88,7 @@
 		5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicTests.swift; sourceTree = "<group>"; };
 		5B24C12422C8F286003A64E5 /* SharedExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExtentions.swift; sourceTree = "<group>"; };
 		5B24C12722C8FDAA003A64E5 /* ComicDetailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHelper.swift; sourceTree = "<group>"; };
+		5B24C12922C917CA003A64E5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHeaderFooterView.swift; sourceTree = "<group>"; };
 		5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeaderFooterView.xib; sourceTree = "<group>"; };
 		5B39F5F022C79E12003997BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				5B0FA7C622C6605400C20E1E /* DataService.swift */,
 				5B39F5FD22C7ECDA003997BF /* Alerts.swift */,
 				5B24C12422C8F286003A64E5 /* SharedExtentions.swift */,
+				5B24C12922C917CA003A64E5 /* Protocols.swift */,
 			);
 			path = CodingChallenge;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */,
 				5B07878F22C546B300A5E19C /* ApiUrls.swift in Sources */,
+				5B24C12A22C917CA003A64E5 /* Protocols.swift in Sources */,
 				5B39F5F722C7AB46003997BF /* FavoriteComic.swift in Sources */,
 				5B0FA7D422C6C28A00C20E1E /* ComicDetails.swift in Sources */,
 				5B0FA7E022C6D9E300C20E1E /* AnyTextCell.swift in Sources */,
