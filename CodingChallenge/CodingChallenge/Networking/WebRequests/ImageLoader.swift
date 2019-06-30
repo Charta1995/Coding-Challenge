@@ -16,6 +16,10 @@ class ImageLoader: WebRequestShared {
         dataTask?.cancel()
     }
     
+    /*
+        This method is loading an image with given url, saves it to cache and returns it.
+        If the same image has loaded once, the saved image will be used.
+     */
     func loadImage(url: String, finishedLoadedImage: @escaping (_ loadedImage: UIImage?) -> ()) {
         if let savedImage = DataService.instance.getAnImage(url: url) {
             checkForMainThread {
