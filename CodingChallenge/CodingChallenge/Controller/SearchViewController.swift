@@ -62,7 +62,7 @@ class SearchViewController: UIViewController {
     }
     
     private func updateDescriptioonText(isShowingContent: Bool) {
-        self.desriptionText.text = !isShowingContent ? "" : "Search for a comic, either with text, number or a mix"
+        self.desriptionText.text = isShowingContent ? "" : "Search for a comic, either with text, number or a mix"
     }
     
     private func whenRequestIsCanceled(searchText: String?) {
