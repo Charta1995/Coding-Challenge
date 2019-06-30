@@ -20,23 +20,27 @@ class ComicCell: UICollectionViewCell {
     
     private var comic: Comic?
     
-    func configureCell(row: Int?, comic: Comic?) {
+    func configureCell(row: Int?, comic: Comic?, searchRow: Int?) {
         setupLoader()
-        loadComic(row: row, comic: comic)
+        loadComic(row: row, comic: comic, searchRow: searchRow)
     }
     
     func getCurrentComic() -> Comic? {
         return comic
     }
     
-    private func loadComic(row: Int?, comic: Comic?) {
+    private func loadComic(row: Int?, comic: Comic?, searchRow: Int?) {
         var comicCompleteUrl: String!
         if let theRow = row {
             let comicNumber = theRow + 1
             comicCompleteUrl = "\(decodableWebRequest.spesificComicPartOne)\(comicNumber)\(decodableWebRequest.spesificComicPathTwo)"
             comicImage.contentMode = .scaleAspectFit
         } else {
-            comicCompleteUrl = decodableWebRequest.current
+            if let theSearchRow = searchRow {
+                comicCompleteUrl = "\(decodableWebRequest.spesificComicPartOne)/\(theSearchRow)/\(decodableWebRequest.spesificComicPathTwo)"
+            } else {
+                comicCompleteUrl = decodableWebRequest.current
+            }
         }
         
         if let coreDataComic = comic {
@@ -59,13 +63,25 @@ class ComicCell: UICollectionViewCell {
     private func updateComicAndCell(comic: Comic, isComic: Bool) {
         self.comic = comic
         self.updateUI()
-        self.loadComicImage(isComic: isComic)
+        self.loadComicImage(isComic: isComic, imageData: comic.imageData)
     }
     
-    private func loadComicImage(isComic: Bool) {
+    
+    
+    private func loadComicImage(isComic: Bool, imageData: Data?) {
         if isComic {
-            self.toggleLoading(shouldStart: true)
+            if let imageData = imageData {
+                if let savedImage = UIImage(data: imageData) {
+                    self.updateImage(loadedImage: savedImage)
+                    return
+                } else {
+                    self.toggleLoading(shouldStart: true)
+                }
+            } else {
+                self.toggleLoading(shouldStart: true)
+            }
         }
+        
         guard let comic = comic else { return }
         imageLoader.loadImage(url: comic.img) { (loadedComicImage) in
             if let theLoadedComicImage = loadedComicImage {
