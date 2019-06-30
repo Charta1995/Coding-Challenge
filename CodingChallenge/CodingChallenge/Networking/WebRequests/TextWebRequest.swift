@@ -16,26 +16,30 @@ class TextWebRequest: WebRequestShared {
         request?.cancel()
     }
     
-    func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: ComicSearchResult?) -> ()) {
+    func makeTextWebRequest(searchText: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ comicSearchResult: ComicSearchResult?) -> (), needToShowLoading: @escaping (_ needToShow: Bool) -> ()) {
         let completeUrl = "\(comicSeach)\(searchText)"
         if let savedSearchResult = DataService.instance.getComicSearchResult(url: completeUrl) {
-            finished(savedSearchResult)
+            needToShowLoading(false)
+            checkForMainThread {
+                finished(savedSearchResult)
+            }
         } else {
+            needToShowLoading(true)
             if let urlRequest = createUrlRequest(url: completeUrl, headers: headers, httpMethod: httpMethod, body: body) {
                 request = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
                     if error == nil {
                         guard let data = data, let dataString = String(data: data, encoding: .utf8) else {
-                            DispatchQueue.main.async {
+                            self.checkForMainThread {
                                 finished(nil)
                             }
                             return
                         }
                         let comicSearchResult = self.parseDataString(dataString: dataString, completeUrl: completeUrl)
-                        DispatchQueue.main.async {
+                        self.checkForMainThread {
                             finished(comicSearchResult)
                         }
                     } else {
-                        DispatchQueue.main.async {
+                        self.checkForMainThread {
                             finished(nil)
                         }
                     }
