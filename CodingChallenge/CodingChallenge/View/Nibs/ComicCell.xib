@@ -20,17 +20,23 @@
                     <rect key="frame" x="0.0" y="0.0" width="396" height="372"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0R9-uc-lWv">
-                            <rect key="frame" x="8" y="8" width="380" height="27.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <rect key="frame" x="8" y="8" width="380" height="32.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="aGf-ai-ZKJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cd8-xv-GgS">
-                            <rect key="frame" x="0.0" y="43.5" width="396" height="292"/>
+                            <rect key="frame" x="0.0" y="48.5" width="396" height="247.5"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqq-CC-7QK">
-                            <rect key="frame" x="8" y="343.5" width="380" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Iqq-CC-7QK">
+                            <rect key="frame" x="8" y="304" width="380" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="3dO-qs-xS2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
