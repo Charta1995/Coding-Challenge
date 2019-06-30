@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var desriptionText: UILabel!
     
-    private var searchResult: ComicSearchResult?
+    private var searchResult = [ComicSearch]()
     private let textWebReqest = TextWebRequest()
     private let alerts = Alerts()
     
@@ -24,21 +24,13 @@ class SearchViewController: UIViewController {
         searchResultCollectionView.delegate = self
         searchResultCollectionView.dataSource = self
         searchBar.delegate = self
-        registerComicNib()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        
+        registerComicNib(collectionView: searchResultCollectionView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchBar.becomeFirstResponder()
-    }
-    
-    private func registerComicNib() {
-        let nib = UINib(nibName: "ComicCell", bundle: nil)
-        searchResultCollectionView.register(nib, forCellWithReuseIdentifier: "searchComicCellId")
     }
 
     private func search(searchText: String) {
@@ -51,7 +43,7 @@ class SearchViewController: UIViewController {
         
         textWebReqest.makeTextWebRequest(searchText: searchText, headers: nil, body: nil, httpMethod: .get, finished: { (result) in
             self.searchResult = result
-            self.updateDescriptioonText(isShowingContent: result != nil)
+            self.updateDescriptioonText(isShowingContent: !result.isEmpty)
             self.searchResultCollectionView.reloadData()
             loadingAlert.dismiss(animated: true, completion: nil)
         }) { (needToShowLoading) in
@@ -82,12 +74,12 @@ class SearchViewController: UIViewController {
     
     private func reset() {
         updateDescriptioonText(isShowingContent: false)
-        searchResult = nil
+        searchResult = []
         searchResultCollectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toComicDesc" {
+        if segue.identifier == DataService.instance.segueToComicDetail {
             if let theDestination = segue.destination as? ComicDetails {
                 if let theComicObject = sender as? Comic {
                     theDestination.selectedComic = theComicObject
@@ -98,43 +90,18 @@ class SearchViewController: UIViewController {
     
 }
 
-
-extension SearchViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? ComicCell else {return}
-        guard let comicObjectFromSelectedCell = selectedCell.getCurrentComic() else {return}
-        performSegue(withIdentifier: "toComicDesc", sender: comicObjectFromSelectedCell)
-    }
-}
-
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let searchResult = searchResult {
-            return searchResult.comicSearches.count
-        }
-        return 0
+        return searchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let searchResult = searchResult else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchComicCellId", for: indexPath) as! ComicCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataService.instance.comicNibId, for: indexPath) as! ComicCell
         cell.decodableWebRequest.cancelRequest()
         cell.imageLoader.cancelRequest()
         
-        cell.configureCell(row: nil, comic: nil, searchRow: searchResult.comicSearches[indexPath.row].id)
+        cell.configureCell(row: nil, comic: nil, searchRow: searchResult[indexPath.row].id)
         return cell
-    }
-    
-    
-}
-
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 375)
     }
 }
 
@@ -165,7 +132,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UIScrollViewDelegate {
+/* ScrollView methods */
+extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
