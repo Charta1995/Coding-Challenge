@@ -13,12 +13,29 @@ class DataService {
     static let instance = DataService()
     
     /*
+        Nib ids
+     */
+    let comicNibId = "comicCellNibID"
+    
+    let anyTextNibId = "anyTextID"
+    let optionButtonsNibId = "optionsButtonCellID"
+    let headerFooterViewNib = "comicDetailHeaderFooterView"
+    
+    /*
+        Segue ids
+     */
+    let segueToComicDetail = "toComicDesc"
+    let segueToVisitComicWebsite = "goToWebController"
+    
+    
+    
+    /*
         I'm using chaches for saving what has been loaded, to then reuse it later.
      */
     
     fileprivate let imageCache: NSCache<NSString, UIImage> = NSCache()
     fileprivate var comicCache = [String: Comic]() // NSCache<NSString, ComicContainer> = NSCache()
-    fileprivate var comicSearchResultCache = [String: ComicSearchResult]() //NSCache<NSString, ComicSearchResultContainer> = NSCache()
+    fileprivate var comicSearchResultCache = [String: [ComicSearch]]() //NSCache<NSString, ComicSearchResultContainer> = NSCache()
     
     /*
         Temporarely save an image.
@@ -56,14 +73,14 @@ class DataService {
         Temporarely save a comic search result.
      */
     
-    func setComicSearchResult(url: String, comicSearchResult: ComicSearchResult) {
+    func setComicSearchResult(url: String, comicSearchResult: [ComicSearch]) {
         comicSearchResultCache[url] = comicSearchResult // .setObject(ComicSearchResultContainer(comicSearchResult: comicSearchResult), forKey: url as NSString)
     }
     
     /*
         Get a temporarely saved comic search result.
      */
-    func getComicSearchResult(url: String) -> ComicSearchResult? {
+    func getComicSearchResult(url: String) -> [ComicSearch]? {
         return comicSearchResultCache[url] // .object(forKey: url as NSString)?.comicSearchResult
     }
     
