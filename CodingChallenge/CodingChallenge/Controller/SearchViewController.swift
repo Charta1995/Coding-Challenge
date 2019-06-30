@@ -30,9 +30,15 @@ class SearchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //Better user experience to open the keyboard at once i think.
         searchBar.becomeFirstResponder()
     }
 
+    /*
+        The method to perform a search.
+        User will get presented a loading alert if necessary
+        When the search is complete, the UI will update.
+     */
     private func search(searchText: String) {
         searchBar.resignFirstResponder()
         let loadingAlert = alerts.presentLoadingAlert {
@@ -57,6 +63,11 @@ class SearchViewController: UIViewController {
         self.desriptionText.text = isShowingContent ? "" : "Search for a comic, either with text, number or a mix"
     }
     
+    /*
+        This method is called when cancel button is clicked or cancel button in loading alert is clicked.
+        The current searchRequest(if any) will be canceled.
+        Based on if the searchbar is empty, the collectionview and description will either reset or keyboard will be dismissed.
+     */
     private func whenRequestIsCanceled(searchText: String?) {
         textWebReqest.cancelRequest()
         
@@ -72,6 +83,9 @@ class SearchViewController: UIViewController {
         
     }
     
+    /*
+        Resets the collectionview and description
+     */
     private func reset() {
         updateDescriptioonText(isShowingContent: false)
         searchResult = []
@@ -97,6 +111,11 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataService.instance.comicNibId, for: indexPath) as! ComicCell
+        
+        /*
+            If user scroll past the cell when the cell has not finished loaded yet, the loadings will be canceled.
+         */
+        
         cell.decodableWebRequest.cancelRequest()
         cell.imageLoader.cancelRequest()
         

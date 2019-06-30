@@ -58,6 +58,7 @@ extension ComicController: UICollectionViewDataSource {
         cell.decodableWebRequest.cancelRequest()
         cell.imageLoader.cancelRequest()
         
+        //The first section is the "featured" or "current" comic, it's url are already defined.
         if indexPath.section == 0 {
             cell.configureCell(row: nil, comic: nil, searchRow: nil)
         } else {

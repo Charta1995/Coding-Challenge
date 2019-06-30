@@ -22,6 +22,9 @@ public struct Comic: Decodable {
     var day: String
     var imageData: Data?
     
+    /*
+        Creating content to share.
+     */
     func getContentToShare(image: UIImage?, comicOnWeb: String, comicExplantaion: String) -> [Any] {
         var contentToShare = [Any]()
         contentToShare.append(image as Any)
@@ -39,6 +42,10 @@ public struct Comic: Decodable {
         
         return contentToShare
     }
+    
+    /*
+        Creating information to save to coredata
+     */
     
     func createDictionaryForSaving(imageData: Data) -> [String: Any] {
         var dictionaryForSaving = [String: Any]()

@@ -16,6 +16,9 @@ class DecodableWebRequest: WebRequestShared {
         request?.cancel()
     }
     
+    /*
+        This method is making a urlrequest and are returning a generic of decodable.
+     */
     func makeDecodableRequest<T>(decodable: T.Type, url: String, headers: [String: Any]?, body: [String: Any]?, httpMethod: HttpMethod, finished: @escaping (_ decodable: T?) -> ()) where T: Decodable {
         
         if let urlRequest = createUrlRequest(url: url, headers: headers, httpMethod: httpMethod, body: body) {
