@@ -19,16 +19,11 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Favorites"
-        registerComicCell()
+        registerComicNib(collectionView: favoriteCollectionView)
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
         favoriteCollectionView.showsVerticalScrollIndicator = false
         settingUpCoreDataDataSource()
-    }
-    
-    private func registerComicCell() {
-        let comicNib = UINib(nibName: "ComicCell", bundle: nil)
-        favoriteCollectionView.register(comicNib, forCellWithReuseIdentifier: "comicCellId")
     }
     
     private func settingUpCoreDataDataSource() {
@@ -36,7 +31,7 @@ class FavoriteViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toComicDesc" {
+        if segue.identifier == DataService.instance.segueToComicDetail {
             if let theDestination = segue.destination as? ComicDetails {
                 if let theSender = sender as? Comic {
                     theDestination.selectedComic = theSender
@@ -47,36 +42,18 @@ class FavoriteViewController: UIViewController {
     
 }
 
-extension FavoriteViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toComicDesc", sender: allComics[indexPath.row])
-    }
-}
-
 extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allComics.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCellId", for: indexPath) as! ComicCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataService.instance.comicNibId, for: indexPath) as! ComicCell
         cell.imageLoader.cancelRequest()
         cell.configureCell(row: nil, comic: allComics[indexPath.row], searchRow: nil)
         return cell
     }
 }
-
-extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 375)
-    }
-}
-
-
 
 extension FavoriteViewController: UpdateFavoriteComicDelegate {
     func update(comics: [Comic]) {

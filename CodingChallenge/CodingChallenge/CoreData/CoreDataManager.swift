@@ -37,7 +37,7 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
     private func convertFavoritesToComics(favoriteComics: [FavoriteComic]) -> [Comic] {
         var allComics = [Comic]()
         for favoriteComic in favoriteComics {
-            if let convertedComic = favoriteComic.convertToComic(instance: favoriteComic) {
+            if let convertedComic = favoriteComic.convertToComic() {
                 allComics.append(convertedComic)
             }
         }
@@ -70,7 +70,7 @@ class CoreDataManager: NSObject, NSFetchedResultsControllerDelegate {
         }
     }
     
-    func setDelegate(viewControllerListener: UIViewController) {
+    func setDelegate(viewControllerListener: NSObject) {
         fetchResultController.delegate = self
         updateFavoriteComicDelegate = viewControllerListener as? UpdateFavoriteComicDelegate
         do {

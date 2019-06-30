@@ -23,15 +23,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Cz-I5-lGg">
                                     <size key="itemSize" width="412" height="372"/>
-                                    <size key="headerReferenceSize" width="50" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R5N-H8-gIP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.84705882352941175" green="0.85098039215686272" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -263,7 +259,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="whT-SQ-XVG">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search for a comic" translatesAutoresizingMaskIntoConstraints="NO" id="whT-SQ-XVG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <color key="barTintColor" red="0.84842586519999996" green="0.84907293319999999" blue="0.84852606060000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -312,7 +308,7 @@
         <scene sceneID="hPV-f1-r0A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jd1-g2-SvU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="rate-star-button" id="ecT-LY-3pl"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="favorites" id="ecT-LY-3pl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zlc-Y1-TvD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -349,7 +345,7 @@
     </scenes>
     <resources>
         <image name="article" width="30" height="30"/>
-        <image name="rate-star-button" width="30" height="29"/>
+        <image name="favorites" width="30" height="30"/>
         <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

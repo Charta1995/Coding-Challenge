@@ -14,20 +14,15 @@ class ComicController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerComicCell()
+        registerComicNib(collectionView: comicCollectionView)
         comicCollectionView.delegate = self
         comicCollectionView.dataSource = self
         comicCollectionView.showsVerticalScrollIndicator = false
         self.title = "Comics"
     }
     
-    private func registerComicCell() {
-        let comicNib = UINib(nibName: "ComicCell", bundle: nil)
-        comicCollectionView.register(comicNib, forCellWithReuseIdentifier: "comicCellId")
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toComicDesc" {
+        if segue.identifier == DataService.instance.segueToComicDetail {
             if let theComic = sender as? Comic {
                 if let theDestination = segue.destination as? ComicDetails {
                     theDestination.selectedComic = theComic
@@ -56,7 +51,7 @@ extension ComicController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCellId", for: indexPath) as! ComicCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataService.instance.comicNibId, for: indexPath) as! ComicCell
         /*
             If user scroll past the cell when the cell has not finished loaded yet, the loadings will be canceled.
          */
@@ -73,32 +68,3 @@ extension ComicController: UICollectionViewDataSource {
     }
     
 }
-
-extension ComicController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? ComicCell {
-            let selectedComic = cell.getCurrentComic()
-            guard let comic = selectedComic else { return }
-            performSegue(withIdentifier: "toComicDesc", sender: comic)
-        }
-    }
-}
-
-extension ComicController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 375)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: UIScreen.main.bounds.width, height: 25)
-        }
-        return CGSize(width: UIScreen.main.bounds.width, height: 0)
-    }
-    
-}
-

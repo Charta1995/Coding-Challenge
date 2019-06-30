@@ -21,7 +21,6 @@
 		5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879622C5626300A5E19C /* HttpMethod.swift */; };
 		5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879822C5629A00A5E19C /* WebRequestShared.swift */; };
 		5B07879B22C5679C00A5E19C /* ComicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879A22C5679C00A5E19C /* ComicSearch.swift */; };
-		5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */; };
 		5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */; };
 		5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7C622C6605400C20E1E /* DataService.swift */; };
 		5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */; };
@@ -31,6 +30,9 @@
 		5B0FA7E222C6E2A500C20E1E /* ComicDetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E122C6E2A500C20E1E /* ComicDetailsSection.swift */; };
 		5B0FA7E722C6E75A00C20E1E /* AnyTextCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E622C6E75A00C20E1E /* AnyTextCellNib.xib */; };
 		5B0FA7E922C6E77000C20E1E /* OptionsButtonCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */; };
+		5B24C12122C8E2E8003A64E5 /* FavoriteComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */; };
+		5B24C12522C8F286003A64E5 /* SharedExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12422C8F286003A64E5 /* SharedExtentions.swift */; };
+		5B24C12822C8FDAA003A64E5 /* ComicDetailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24C12722C8FDAA003A64E5 /* ComicDetailHelper.swift */; };
 		5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */; };
 		5B39F5EF22C78E96003997BF /* ComicDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */; };
 		5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39F5F022C79E12003997BF /* WebViewController.swift */; };
@@ -73,7 +75,6 @@
 		5B07879622C5626300A5E19C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		5B07879822C5629A00A5E19C /* WebRequestShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestShared.swift; sourceTree = "<group>"; };
 		5B07879A22C5679C00A5E19C /* ComicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearch.swift; sourceTree = "<group>"; };
-		5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSearchResult.swift; sourceTree = "<group>"; };
 		5B0FA7C422C65E0C00C20E1E /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
 		5B0FA7C622C6605400C20E1E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		5B0FA7CA22C6675600C20E1E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -83,6 +84,9 @@
 		5B0FA7E122C6E2A500C20E1E /* ComicDetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsSection.swift; sourceTree = "<group>"; };
 		5B0FA7E622C6E75A00C20E1E /* AnyTextCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnyTextCellNib.xib; sourceTree = "<group>"; };
 		5B0FA7E822C6E77000C20E1E /* OptionsButtonCellNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsButtonCellNib.xib; sourceTree = "<group>"; };
+		5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicTests.swift; sourceTree = "<group>"; };
+		5B24C12422C8F286003A64E5 /* SharedExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedExtentions.swift; sourceTree = "<group>"; };
+		5B24C12722C8FDAA003A64E5 /* ComicDetailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHelper.swift; sourceTree = "<group>"; };
 		5B39F5EC22C78D84003997BF /* ComicDetailHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailHeaderFooterView.swift; sourceTree = "<group>"; };
 		5B39F5EE22C78E96003997BF /* ComicDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicDetailHeaderFooterView.xib; sourceTree = "<group>"; };
 		5B39F5F022C79E12003997BF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				5B07876B22C537BB00A5E19C /* CodingChallenge.xcdatamodeld */,
 				5B0FA7C622C6605400C20E1E /* DataService.swift */,
 				5B39F5FD22C7ECDA003997BF /* Alerts.swift */,
+				5B24C12422C8F286003A64E5 /* SharedExtentions.swift */,
 			);
 			path = CodingChallenge;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			children = (
 				5B07877C22C537BB00A5E19C /* CodingChallengeTests.swift */,
 				5B07877E22C537BB00A5E19C /* Info.plist */,
+				5B24C12022C8E2E8003A64E5 /* FavoriteComicTests.swift */,
 			);
 			path = CodingChallengeTests;
 			sourceTree = "<group>";
@@ -167,7 +173,6 @@
 			children = (
 				5B07878C22C53F7800A5E19C /* Comic.swift */,
 				5B07879A22C5679C00A5E19C /* ComicSearch.swift */,
-				5B07879C22C567ED00A5E19C /* ComicSearchResult.swift */,
 				5B0FA7E122C6E2A500C20E1E /* ComicDetailsSection.swift */,
 			);
 			path = Model;
@@ -187,8 +192,8 @@
 		5B07878922C5382600A5E19C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5B24C12622C8FD92003A64E5 /* ComicDetails */,
 				5B07876622C537BB00A5E19C /* ComicController.swift */,
-				5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */,
 				5B39F5F022C79E12003997BF /* WebViewController.swift */,
 				5B39F5FF22C7F2B5003997BF /* FavoriteViewController.swift */,
 				5B39F60322C815D7003997BF /* SearchViewController.swift */,
@@ -269,6 +274,15 @@
 				5B39F60122C7FA4A003997BF /* ComicCell.xib */,
 			);
 			path = Nibs;
+			sourceTree = "<group>";
+		};
+		5B24C12622C8FD92003A64E5 /* ComicDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5B0FA7D322C6C28A00C20E1E /* ComicDetails.swift */,
+				5B24C12722C8FDAA003A64E5 /* ComicDetailHelper.swift */,
+			);
+			path = ComicDetails;
 			sourceTree = "<group>";
 		};
 		5B39F5EB22C78D66003997BF /* HeaderFooterView */ = {
@@ -413,6 +427,7 @@
 				5B39F5ED22C78D84003997BF /* ComicDetailHeaderFooterView.swift in Sources */,
 				5B07879122C5587900A5E19C /* DecodableWebRequest.swift in Sources */,
 				5B0FA7C722C6605400C20E1E /* DataService.swift in Sources */,
+				5B24C12522C8F286003A64E5 /* SharedExtentions.swift in Sources */,
 				5B39F5F122C79E12003997BF /* WebViewController.swift in Sources */,
 				5B0FA7CB22C6675600C20E1E /* ImageLoader.swift in Sources */,
 				5B07876D22C537BB00A5E19C /* CodingChallenge.xcdatamodeld in Sources */,
@@ -423,10 +438,10 @@
 				5B39F5FE22C7ECDA003997BF /* Alerts.swift in Sources */,
 				5B07879722C5626300A5E19C /* HttpMethod.swift in Sources */,
 				5B39F5FA22C7AF23003997BF /* CoreDataManager.swift in Sources */,
-				5B07879D22C567ED00A5E19C /* ComicSearchResult.swift in Sources */,
 				5B39F60022C7F2B5003997BF /* FavoriteViewController.swift in Sources */,
 				5B07879922C5629A00A5E19C /* WebRequestShared.swift in Sources */,
 				5B0FA7E222C6E2A500C20E1E /* ComicDetailsSection.swift in Sources */,
+				5B24C12822C8FDAA003A64E5 /* ComicDetailHelper.swift in Sources */,
 				5B0FA7DE22C6D8EF00C20E1E /* OptionsButtonCell.swift in Sources */,
 				5B07878D22C53F7800A5E19C /* Comic.swift in Sources */,
 				5B0FA7C522C65E0C00C20E1E /* ComicCell.swift in Sources */,
@@ -443,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B07877D22C537BB00A5E19C /* CodingChallengeTests.swift in Sources */,
+				5B24C12122C8E2E8003A64E5 /* FavoriteComicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

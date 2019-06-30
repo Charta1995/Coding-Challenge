@@ -38,4 +38,20 @@ class WebRequestShared: ApiUrls {
         }
         return jsonData
     }
+    
+    /*
+        Checking for main thread to update the ui.
+        I had an issue when i used a collectionview in tableViewCells in a tableview where the thread should be on main thread, but was not.
+        I got a bit confused of it and i have not been able to recreate the crash in this application, but for safety, i'm just checking.
+     */
+    
+    func checkForMainThread(updateUI: @escaping () -> ()) {
+        if Thread.isMainThread {
+            updateUI()
+        } else {
+            DispatchQueue.main.async {
+                updateUI()
+            }
+        }
+    }
 }

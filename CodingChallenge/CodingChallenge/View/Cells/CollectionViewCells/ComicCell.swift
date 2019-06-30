@@ -30,6 +30,7 @@ class ComicCell: UICollectionViewCell {
     }
     
     private func loadComic(row: Int?, comic: Comic?, searchRow: Int?) {
+        comicImage.image = nil
         var comicCompleteUrl: String!
         if let theRow = row {
             let comicNumber = theRow + 1
@@ -65,8 +66,6 @@ class ComicCell: UICollectionViewCell {
         self.updateUI()
         self.loadComicImage(isComic: isComic, imageData: comic.imageData)
     }
-    
-    
     
     private func loadComicImage(isComic: Bool, imageData: Data?) {
         if isComic {
