@@ -20,7 +20,7 @@ public struct Comic: Decodable {
     var img: String
     var title: String
     var day: String
-    
+    var imageData: Data?
     
     func getContentToShare(image: UIImage?, comicOnWeb: String, comicExplantaion: String) -> [Any] {
         var contentToShare = [Any]()
